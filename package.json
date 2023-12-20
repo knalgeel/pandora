@@ -35,8 +35,5 @@
         "karma-jasmine-html-reporter": "~2.1.0",
         "ng-packagr": "^17.0.0",
         "typescript": "~5.2.2"
-    },
-    "publishConfig": {
-        "@knalgeel:registry": "https://npm.pkg.github.com"
     }
 }
