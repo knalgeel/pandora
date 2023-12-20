@@ -20,6 +20,7 @@ jobs:
       - run: npm install -g @angular/cli
       - run: ng build pandora
       - run: ls -alh
+      - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
       - run: npm publish ./dist/pandora
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
