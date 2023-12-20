@@ -13,6 +13,9 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
+      - run: ng build pandora
+      - run: cd dist/pandora
+      - run: npm publish
 
   publish-gpr:
     needs: build
