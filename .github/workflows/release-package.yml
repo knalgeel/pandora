@@ -15,6 +15,7 @@ jobs:
       - run: npm ci
       - run: npm install -g @angular/cli
       - run: ng build pandora
+      - run: cp .npmrc dist/pandora
       - run: cd dist/pandora
       - run: npm publish
 
