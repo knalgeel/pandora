@@ -1,0 +1,15 @@
+<div
+    class="code-input"
+    [ngClass]="class"
+>
+    @for(_ of values; track $index) {
+        <input
+            (input)="onInput($event, $index)"
+            (paste)="onPaste($event, $index)"
+            (keydown)="onKeyDown($event, $index)"
+            [value]="values[$index]"
+            maxlength="1"
+            class="code-input__input"
+        >
+    }
+</div>

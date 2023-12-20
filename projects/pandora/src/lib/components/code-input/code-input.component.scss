@@ -1,0 +1,18 @@
+:host {
+
+    .code-input {
+        @apply grid gap-4;
+
+        // For each column until 12
+        @for $i from 1 through 12 {
+            &--count-#{$i} {
+                @apply grid-cols-#{$i};
+            }
+        }
+
+        &__input {
+            @apply col-span-1 border rounded-md p-2 text-center text-2xl font-bold;
+        }
+    }
+
+}
