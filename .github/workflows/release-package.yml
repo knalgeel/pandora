@@ -2,7 +2,7 @@ name: Node.js Package
 
 on:
   release:
-    types: [ created ]
+    types: [created]
 
 jobs:
   publish-gpr:
@@ -18,6 +18,10 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
       - run: npm install -g @angular/cli
+      - name: Install dependencies in projects/pandora
+        run: |
+          cd projects/pandora
+          npm install
       - run: npm run build:pandora
       - run: npm publish ./dist/pandora
         env:
