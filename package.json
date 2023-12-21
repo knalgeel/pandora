@@ -6,7 +6,8 @@
         "start": "ng serve",
         "build": "ng build",
         "watch": "ng build --watch --configuration development",
-        "test": "ng test"
+        "test": "ng test",
+        "build:pandora" : "ng build pandora && node copyTypings.js"
     },
     "private": true,
     "dependencies": {

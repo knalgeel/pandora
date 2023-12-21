@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgClass } from "@angular/common";
 
 @Component({
-    selector: 'app-code-input',
+    selector: 'pandora-code-input',
     standalone: true,
     imports: [
         NgClass

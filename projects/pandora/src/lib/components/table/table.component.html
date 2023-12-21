@@ -1,0 +1,43 @@
+<div class="flow-root">
+    <div class="-mx-4 -my-2 overflow-y-visible sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+            <table #table class="min-w-full divide-y divide-gray-300">
+                <thead #thead>
+                <tr>
+                    @for (field of sortedFields();track field) {
+                        <th
+                            app-table-header
+                            [header]="field.header"
+                        >
+                        </th>
+                    }
+                </tr>
+                </thead>
+                <tbody
+                    #tbody
+                    autoAnimate
+                    class="bg-white h-full min-w-full divide-y divide-gray-200"
+                >
+                    @if (count === 0) {
+                        <tr>
+                            <td app-table-placeholder-column></td>
+                        </tr>
+                    } @else {
+                        @for (item of items;track item.id) {
+                            <tr>
+                                @for (field of sortedFields();track field) {
+                                    <td
+                                        app-table-column
+                                        [column]="field.column"
+                                        [item]="item"
+                                    >
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

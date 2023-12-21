@@ -1,0 +1,8 @@
+@if (isComponent) {
+    <app-generic
+        [inputs]="value.inputs"
+        [component]="value.component"
+    />
+} @else {
+    {{ value }}
+}

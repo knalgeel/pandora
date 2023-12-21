@@ -18,7 +18,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
       - run: npm install -g @angular/cli
-      - run: ng build pandora
+      - run: npm run build:pandora
       - run: npm publish ./dist/pandora
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
