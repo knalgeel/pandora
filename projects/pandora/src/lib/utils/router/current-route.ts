@@ -23,7 +23,7 @@ export class CurrentRoute {
     }
 
     get path() {
-        return this._route.snapshot.url;
+        return this._route?.snapshot.url;
     }
 
 

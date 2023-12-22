@@ -1,0 +1,55 @@
+
+class TableExampleComponent {
+
+     fields: TableFieldRecord<User> = {
+        name: {
+            header: 'Name',
+            column: (item) => item.name,
+            order: 1,
+        },
+        email: {
+            header: 'Email',
+            column: (item) => item.email,
+            order: 2,
+        },
+        phone: {
+            header: {
+                text: 'Phone',
+                class: 'text-red-500',
+            },
+            column: {
+                handle: (item) => item.phone,
+                class: 'line-through',
+            },
+            order: 3,
+        },
+        actions: {
+            header: '',
+            column: (employee) => ({
+                component: TableActionsComponent,
+                inputs: {
+                    actions: [
+                        {
+                            label: 'Edit',
+                            icon: 'heroPencilSquare',
+                            execute: () => console.log('Edit')
+                        },
+                        {
+                            label: 'Delete',
+                            icon: 'heroTrash',
+                            execute: () => this.items.update(items => items.filter(item => item.id !== employee.id))
+                        },
+                    ]
+                }
+            }),
+            order: 5,
+        }
+    }
+
+    items = signal<User[]>([
+        { id: '1', name: 'John', email: 'john@example.com', phone: '1234567890' },
+        { id: '2', name: 'Jane', email: 'jane@example.com', phone: '2345678901' },
+        { id: '3', name: 'Jack', email: 'jack@example.com', phone: '3456789012' },
+        ...
+    ]);
+}

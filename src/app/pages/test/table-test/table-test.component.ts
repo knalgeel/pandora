@@ -3,8 +3,10 @@ import { TableFieldRecord, ArrayPaginator } from "pandora";
 import {
     TableActionsComponent
 } from "../../../../../projects/pandora/src/lib/components/table/actions/table-actions.component";
+import 'prismjs';
+import 'prismjs/components/prism-typescript';
 
-interface User {
+export interface User {
     id: string;
     name: string;
     email: string;
@@ -92,5 +94,6 @@ export class TableTestComponent {
     ]);
 
     paginator = new ArrayPaginator(this.items);
+
 
 }

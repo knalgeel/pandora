@@ -15,17 +15,21 @@ import { CodeInputComponent } from "../../projects/pandora/src/lib/components/co
 import { AvatarTestComponent } from './pages/test/avatar-test/avatar-test.component';
 import { AvatarComponent } from "../../projects/pandora/src/lib/components/avatar";
 import { AutoAnimateDirective } from "pandora";
+import { CodeBlockComponent } from './components/code-block/code-block.component';
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 
 @NgModule({
     declarations: [
         AppComponent,
         TableTestComponent,
         CodeInputTestComponent,
-        AvatarTestComponent
+        AvatarTestComponent,
+        CodeBlockComponent
     ],
     imports: [
         CommonModule,
         BrowserModule,
+        HttpClientModule,
         RouterModule.forRoot(routes),
         BrowserAnimationsModule,
         NgIconsModule.withIcons({

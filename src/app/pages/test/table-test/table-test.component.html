@@ -1,8 +1,19 @@
-<div class="border rounded-md overflow-hidden">
-    <pandora-table
-        [fields]="fields"
-        [items]="paginator.items"
-    />
-</div>
+<div class="space-y-12">
+    <div>
+        <div class="border rounded-md overflow-hidden">
+            <pandora-table
+                [fields]="fields"
+                [items]="paginator.items"
+            />
+        </div>
 
-<app-paginator [paginator]="paginator"/>
+        <app-paginator [paginator]="paginator"/>
+    </div>
+
+    <div>
+        <app-code-block
+            title="Usage"
+            asset="items.stub"
+        />
+    </div>
+</div>
