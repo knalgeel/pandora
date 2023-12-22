@@ -4,11 +4,10 @@ import { ITableAction } from "./typings/action";
 import { NgIcon, provideIcons } from "@ng-icons/core";
 import { heroEllipsisVertical } from "@ng-icons/heroicons/outline";
 import { AutoAnimateDirective } from "../../../directives/auto-animate.directive";
-import { animate, style, transition, trigger } from "@angular/animations";
 import { DropdownDirective } from "../../../directives/dropdown.directive";
 
 @Component({
-    selector: 'app-table-actions',
+    selector: 'pandora-table-actions',
     standalone: true,
     imports: [
         CommonModule,

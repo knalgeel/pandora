@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, HostBinding, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'td[app-table-placeholder-column]',
+    selector: 'td[pandora-table-placeholder-column]',
     standalone: true,
     imports: [],
     templateUrl: './placeholder-column.component.html',

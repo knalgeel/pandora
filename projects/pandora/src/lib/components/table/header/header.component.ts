@@ -4,11 +4,11 @@ import { ITableField } from "../typings/table-field";
 import { ITableHeader, TableHeader } from "./typings/table-header";
 
 @Component({
-    selector: '[app-table-header]',
+    selector: '[pandora-table-header]',
     standalone: true,
     imports: [CommonModule],
     templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss']
+    styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
 

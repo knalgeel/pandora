@@ -4,9 +4,9 @@
             <table #table class="min-w-full divide-y divide-gray-300">
                 <thead #thead>
                 <tr>
-                    @for (field of sortedFields();track field) {
+                    @for (field of fields;track field) {
                         <th
-                            app-table-header
+                            pandora-table-header
                             [header]="field.header"
                         >
                         </th>
@@ -16,18 +16,17 @@
                 <tbody
                     #tbody
                     autoAnimate
-                    class="bg-white h-full min-w-full divide-y divide-gray-200"
                 >
                     @if (count === 0) {
                         <tr>
-                            <td app-table-placeholder-column></td>
+                            <td pandora-table-placeholder-column></td>
                         </tr>
                     } @else {
                         @for (item of items;track item.id) {
                             <tr>
-                                @for (field of sortedFields();track field) {
+                                @for (field of fields;track field) {
                                     <td
-                                        app-table-column
+                                        pandora-table-column
                                         [column]="field.column"
                                         [item]="item"
                                     >

@@ -1,0 +1,27 @@
+:host {
+    .triangle {
+        &:before {
+            content: '';
+            z-index: 100;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 14px solid #ffffff;
+            top: -12px;
+        }
+
+        &--left {
+            &:before {
+                left: 10px;
+            }
+        }
+
+        &--right {
+            &:before {
+                right: 10px;
+            }
+        }
+    }
+}

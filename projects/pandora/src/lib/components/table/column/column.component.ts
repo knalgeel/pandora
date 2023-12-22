@@ -5,7 +5,7 @@ import { GenericComponent } from "../../generic/generic.component";
 import { BindInputDirective } from "../../../directives/bind-input.directive";
 
 @Component({
-    selector: '[app-table-column]',
+    selector: '[pandora-table-column]',
     standalone: true,
     imports: [CommonModule, BindInputDirective, GenericComponent],
     templateUrl: './column.component.html',

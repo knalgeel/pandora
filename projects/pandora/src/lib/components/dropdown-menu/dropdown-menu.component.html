@@ -1,0 +1,30 @@
+@if (active) {
+    <div @backdropAnimation class="backdrop-brightness-95 w-full h-full fixed inset-0 z-30"></div>
+    <div
+        @menuAnimation
+        class="absolute z-40 mt-4"
+        [class]="align === 'left' ? 'left-0' : 'right-0'"
+    >
+        <div class="bg-white rounded-md overflow-hidden border shadow w-60 divide-y">
+            @for (group of groups;track group) {
+                <ul class="py-2">
+                    @for (item of group.items;track item.label) {
+                        <li
+                            (click)="onClickMenuItem(item)"
+                            class="group px-4 py-2 hover:bg-gray-100 flex items-center cursor-pointer"
+                        >
+                            <ng-icon
+                                class="text-gray-500 group-hover:scale-110 transform transition-all duration-200"
+                                size="1.35em"
+                                [name]="item.icon"
+                            />
+                            <span class="pl-3 text-sm whitespace-nowrap text-gray-700">
+                                {{ item.label }}
+                            </span>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+}
