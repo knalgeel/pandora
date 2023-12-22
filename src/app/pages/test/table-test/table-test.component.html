@@ -1,10 +1,8 @@
-<div class="max-w-7xl mx-auto py-12">
-    <div class="border rounded-md overflow-hidden">
-        <pandora-table
-            [fields]="fields"
-            [items]="paginator.items"
-        />
-    </div>
-
-    <app-paginator [paginator]="paginator"/>
+<div class="border rounded-md overflow-hidden">
+    <pandora-table
+        [fields]="fields"
+        [items]="paginator.items"
+    />
 </div>
+
+<app-paginator [paginator]="paginator"/>

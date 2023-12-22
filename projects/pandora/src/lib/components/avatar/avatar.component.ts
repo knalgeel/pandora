@@ -17,7 +17,7 @@ export class AvatarComponent {
     size: AvatarSize = 'md';
 
     get sizeClass() {
-        return `avatar--${ this.size }`
+        return `avatar__image--${ this.size }`
     }
 
 }

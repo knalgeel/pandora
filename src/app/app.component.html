@@ -1,3 +1,28 @@
-<div class="h-full">
-    <router-outlet></router-outlet>
+<div class="min-h-screen flex">
+    <div class="w-60 border-r flex flex-col">
+        <h2 class="px-6 py-3 text-lg font-bold">
+            Components
+        </h2>
+        <ul class="divide-y border-t h-full">
+            @for (route of routes(); track route) {
+                <li>
+                    <a [routerLink]="'test/' + route.path">
+                        <div class="px-6 py-3 text-sm">
+                            {{ route.path }}
+                        </div>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="flex-grow">
+        <h1 class="px-6 py-3 text-lg font-bold border-b">
+            {{ currentRoute.path }}
+        </h1>
+        <div class="max-w-7xl mx-auto py-12">
+            <div autoAnimate>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
 </div>

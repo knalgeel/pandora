@@ -1,5 +1,5 @@
-import { Component, signal, Signal, WritableSignal } from '@angular/core';
-import { TableFieldRecord, Paginator } from "pandora";
+import { Component, signal } from '@angular/core';
+import { TableFieldRecord, ArrayPaginator } from "pandora";
 import {
     TableActionsComponent
 } from "../../../../../projects/pandora/src/lib/components/table/actions/table-actions.component";
@@ -30,8 +30,14 @@ export class TableTestComponent {
             order: 2,
         },
         phone: {
-            header: 'Phone',
-            column: (item) => item.phone,
+            header: {
+                text: 'Phone',
+                class: 'text-red-500',
+            },
+            column: {
+                handle: (item) => item.phone,
+                class: 'line-through',
+            },
             order: 3,
         },
         actions: {
@@ -57,7 +63,7 @@ export class TableTestComponent {
         }
     }
 
-    items: WritableSignal<User[]> = signal([
+    items = signal<User[]>([
         { id: '1', name: 'John', email: 'john@example.com', phone: '1234567890' },
         { id: '2', name: 'Jane', email: 'jane@example.com', phone: '2345678901' },
         { id: '3', name: 'Jack', email: 'jack@example.com', phone: '3456789012' },
@@ -85,38 +91,6 @@ export class TableTestComponent {
         { id: '25', name: 'Brian', email: 'brian@example.com', phone: '5678904321' },
     ]);
 
-    paginator = new class implements Paginator<User> {
-
-        constructor(private readonly _items: Signal<User[]>) {}
-
-        currentPage: number = 1;
-
-        loading: boolean = false;
-
-        get lastPage(): number {
-            return Math.ceil(this._items().length / 10);
-        }
-
-        get total(): number {
-            return this._items().length;
-        }
-
-        get items(): User[] {
-            return this._items().slice((this.currentPage - 1) * 10, this.currentPage * 10);
-        }
-
-        goto(page: number) {
-            this.currentPage = page;
-        }
-
-        next() {
-            this.goto(this.currentPage + 1);
-        }
-
-        previous() {
-            this.goto(this.currentPage - 1);
-        }
-
-    }(this.items);
+    paginator = new ArrayPaginator(this.items);
 
 }

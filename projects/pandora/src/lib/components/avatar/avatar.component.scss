@@ -2,44 +2,50 @@
     .avatar {
         @apply overflow-hidden rounded-full border border-gray-300;
 
-        &--sm {
-            @apply h-6 w-6;
-        }
+       &__image {
+           &--xs {
+               @apply h-4 w-4;
+           }
 
-        &--md {
-            @apply h-8 w-8;
-        }
+           &--sm {
+               @apply h-6 w-6;
+           }
 
-        &--lg {
-            @apply h-12 w-12;
-        }
+           &--md {
+               @apply h-8 w-8;
+           }
 
-        &--xl {
-            @apply h-16 w-16;
-        }
+           &--lg {
+               @apply h-12 w-12;
+           }
 
-        &--2xl {
-            @apply h-20 w-20;
-        }
+           &--xl {
+               @apply h-16 w-16;
+           }
 
-        &--3xl {
-            @apply h-24 w-24;
-        }
+           &--2xl {
+               @apply h-20 w-20;
+           }
 
-        &--4xl {
-            @apply h-32 w-32;
-        }
+           &--3xl {
+               @apply h-24 w-24;
+           }
 
-        &--5xl {
-            @apply h-40 w-40;
-        }
+           &--4xl {
+               @apply h-32 w-32;
+           }
 
-        &--6xl {
-            @apply h-48 w-48;
-        }
+           &--5xl {
+               @apply h-40 w-40;
+           }
 
-        &--7xl {
-            @apply h-56 w-56;
-        }
+           &--6xl {
+               @apply h-48 w-48;
+           }
+
+           &--7xl {
+               @apply h-56 w-56;
+           }
+       }
     }
 }

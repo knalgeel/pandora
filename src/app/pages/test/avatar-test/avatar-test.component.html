@@ -1,0 +1,12 @@
+<div class="divide-y">
+    @for (size of sizes; track size) {
+        <div class="flex space-x-10 items-center py-6">
+            <div class="w-10 font-bold text-xl">
+                {{ size }}
+            </div>
+            <div class="flex justify-center w-full">
+                <pandora-avatar [size]="size"/>
+            </div>
+        </div>
+    }
+</div>

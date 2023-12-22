@@ -12,12 +12,16 @@ import { heroPencilSquare, heroTrash } from "@ng-icons/heroicons/outline";
 import { PaginatorComponent } from "../../projects/pandora/src/lib/components/paginator/paginator.component";
 import { CodeInputTestComponent } from './pages/test/code-input-test/code-input-test.component';
 import { CodeInputComponent } from "../../projects/pandora/src/lib/components/code-input";
+import { AvatarTestComponent } from './pages/test/avatar-test/avatar-test.component';
+import { AvatarComponent } from "../../projects/pandora/src/lib/components/avatar";
+import { AutoAnimateDirective } from "pandora";
 
 @NgModule({
     declarations: [
         AppComponent,
         TableTestComponent,
-        CodeInputTestComponent
+        CodeInputTestComponent,
+        AvatarTestComponent
     ],
     imports: [
         CommonModule,
@@ -32,6 +36,9 @@ import { CodeInputComponent } from "../../projects/pandora/src/lib/components/co
         TableComponent,
         PaginatorComponent,
         CodeInputComponent,
+        AvatarComponent,
+
+        AutoAnimateDirective,
     ],
     bootstrap: [
         AppComponent
