@@ -11,12 +11,12 @@
             <app-paginator [paginator]="paginator"/>
         </div>
     </div>
-    <div documentation class="space-y-12">
-        <div class="grid grid-cols-3 gap-8 pt-6">
-            <div class="col-span-1">
+    <div documentation class="space-y-16">
+        <div class="grid grid-cols-5 gap-12 pt-6">
+            <div class="col-span-2">
                 <app-markdown-block asset="markdown/table-usage.markdown"/>
             </div>
-            <div class="col-span-2 flex flex-col space-y-6">
+            <div class="col-span-3 flex flex-col space-y-6 pt-10">
                 <app-code-block
                     title="Import"
                     language="typescript"
@@ -30,15 +30,28 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-3 gap-8 pt-6">
-            <div class="col-span-1">
+        <div class="grid grid-cols-5 gap-12 pt-6">
+            <div class="col-span-2">
                 <app-markdown-block asset="markdown/table-field-definition.markdown"/>
             </div>
-            <div class="col-span-2 flex flex-col space-y-6">
+            <div class="col-span-3 flex flex-col space-y-6 pt-10">
                 <app-code-block
                     title="Fields example"
                     language="typescript"
                     asset="stubs/table.fields.ts.stub"
+                />
+            </div>
+        </div>
+
+        <div class="grid grid-cols-5 gap-12 pt-6">
+            <div class="col-span-2">
+                <app-markdown-block asset="markdown/table-field-actions.markdown"/>
+            </div>
+            <div class="col-span-3 flex flex-col space-y-6 pt-10">
+                <app-code-block
+                    title="Table actions example"
+                    language="typescript"
+                    asset="stubs/table.field-actions.ts.stub"
                 />
             </div>
         </div>

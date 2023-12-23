@@ -1,0 +1,25 @@
+
+fields: TableFieldRecord<User> = {
+   ...
+    actions: {
+        header: '',
+        column: (employee) => ({
+            component: TableActionsComponent,
+            inputs: {
+                actions: [
+                    {
+                        label: 'Edit',
+                        icon: 'heroPencilSquare',
+                        execute: () => console.log('Edit')
+                    },
+                    {
+                        label: 'Delete',
+                        icon: 'heroTrash',
+                        execute: () => console.log('Delete')
+                    },
+                ]
+            }
+        }),
+        order: 5,
+    }
+}
