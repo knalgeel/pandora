@@ -1,0 +1,28 @@
+<div>
+    <div class="grid grid-cols-2 border-b overflow-hidden text-sm">
+        <div
+            (click)="setState('component')"
+            [class]="state === 'component' ? 'border-b-2 border-b-indigo-500' : ''"
+            class="p-4 text-center cursor-pointer"
+        >
+            Component
+        </div>
+        <div
+            (click)="setState('documentation')"
+            [class]="state === 'documentation' ? 'border-b-2 border-b-indigo-500' : ''"
+            class="p-4 text-center cursor-pointer"
+        >
+            Documentation
+        </div>
+    </div>
+    <div class="py-12">
+        @switch (state) {
+            @case ('component') {
+                <ng-content select="[component]"/>
+            }
+            @case ('documentation') {
+                <ng-content select="[documentation]"/>
+            }
+        }
+    </div>
+</div>

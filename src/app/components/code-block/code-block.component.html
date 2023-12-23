@@ -1,10 +1,23 @@
-<div>
-    <h3 class="text-lg font-medium text-gray-900 mb-4">
-        {{ title }}
-    </h3>
-    <div class="border bg-gray-50 rounded-md overflow-hidden">
-        <pre class="bg-transparent py-0">
-            <code class="language-typescript text-xs leading-3">{{ content }}</code>
-        </pre>
+<div class="code-block">
+    <div class="border divide-y rounded-md overflow-hidden">
+        <div class="py-1 px-2 bg-gray-100 flex justify-between">
+            <div class="text-sm font-bold">
+                {{ title }}
+            </div>
+            <div class="font-medium text-xs">
+                {{ language }}
+            </div>
+        </div>
+        <div>
+            <div class="-my-14">
+                <div class="overflow-x-scroll">
+                    <pre class="bg-transparent">
+                        <code #code [class]="'language-' + language" class="text-xs">
+                            {{ content }}
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,0 +1,7 @@
+
+<div>
+    <pandora-avatar
+        src="https://example.com/image.png"
+        size="md"
+    />
+</div>

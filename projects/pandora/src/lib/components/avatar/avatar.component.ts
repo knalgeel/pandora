@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 
 export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
 
@@ -8,7 +8,7 @@ export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl
     templateUrl: './avatar.component.html',
     styleUrls: ['./avatar.component.scss']
 })
-export class AvatarComponent {
+export class AvatarComponent implements OnDestroy {
 
     @Input()
     src: string;
@@ -16,8 +16,13 @@ export class AvatarComponent {
     @Input()
     size: AvatarSize = 'md';
 
+    ngOnDestroy() {
+        this.src = '';
+    }
+
     get sizeClass() {
         return `avatar__image--${ this.size }`
     }
+
 
 }

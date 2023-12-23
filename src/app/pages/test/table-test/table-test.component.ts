@@ -2,9 +2,7 @@ import { Component, signal } from '@angular/core';
 import { TableFieldRecord, ArrayPaginator } from "pandora";
 import {
     TableActionsComponent
-} from "../../../../../projects/pandora/src/lib/components/table/actions/table-actions.component";
-import 'prismjs';
-import 'prismjs/components/prism-typescript';
+} from "../../../../../projects/pandora/src/lib/components/table";
 
 export interface User {
     id: string;

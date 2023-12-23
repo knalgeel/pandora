@@ -1,0 +1,45 @@
+
+fields: TableFieldRecord<User> = {
+    name: {
+        header: 'Name',
+        column: (item) => item.name,
+        order: 1,
+    },
+    email: {
+        header: 'Email',
+        column: (item) => item.email,
+        order: 2,
+    },
+    phone: {
+        header: {
+            text: 'Phone',
+            class: 'text-red-500',
+        },
+        column: {
+            handle: (item) => item.phone,
+            class: 'line-through',
+        },
+        order: 3,
+    },
+    actions: {
+        header: '',
+        column: (employee) => ({
+            component: TableActionsComponent,
+            inputs: {
+                actions: [
+                    {
+                        label: 'Edit',
+                        icon: 'heroPencilSquare',
+                        execute: () => console.log('Edit')
+                    },
+                    {
+                        label: 'Delete',
+                        icon: 'heroTrash',
+                        execute: () => this.items.update(items => items.filter(item => item.id !== employee.id))
+                    },
+                ]
+            }
+        }),
+        order: 5,
+    }
+}

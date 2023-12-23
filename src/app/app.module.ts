@@ -17,6 +17,10 @@ import { AvatarComponent } from "../../projects/pandora/src/lib/components/avata
 import { AutoAnimateDirective } from "pandora";
 import { CodeBlockComponent } from './components/code-block/code-block.component';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { ApiDocComponent } from './api-doc/api-doc.component';
+import { ApiDocSectionComponent } from './api-doc-section/api-doc-section.component';
+import { MarkdownBlockComponent } from './markdown-block/markdown-block.component';
+import { ComponentDocsSwitchComponent } from './components/component-docs-switch/component-docs-switch.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +28,11 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
         TableTestComponent,
         CodeInputTestComponent,
         AvatarTestComponent,
-        CodeBlockComponent
+        CodeBlockComponent,
+        ApiDocComponent,
+        ApiDocSectionComponent,
+        MarkdownBlockComponent,
+        ComponentDocsSwitchComponent
     ],
     imports: [
         CommonModule,

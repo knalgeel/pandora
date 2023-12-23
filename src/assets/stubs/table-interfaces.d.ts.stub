@@ -1,0 +1,20 @@
+
+export interface ITableField<T = any> {
+    header: TableHeader;
+    column: TableColumn<T>;
+    order: number;
+}
+
+export interface ITableHeader {
+    text: string;
+    class?: string;
+}
+
+export type TableHeader = ITableHeader | string;
+
+export interface ITableColumn<T = any> {
+    handle: (item: T) => TableComponentValue;
+    class?: string;
+}
+
+export type TableColumn<T = any> = ITableColumn<T> | ((item: T) => TableComponentValue);
