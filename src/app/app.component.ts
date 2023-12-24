@@ -10,7 +10,13 @@ import Prism from "prismjs";
 })
 export class AppComponent implements OnInit {
     title = 'Pandora';
-    routes: Signal<Route[]>
+
+    routes: Record<string, Route[]> = {
+        components: [],
+        utils: [],
+        directives: [],
+    }
+
     currentRoute: CurrentRoute;
 
     constructor(private readonly router: Router) {
@@ -18,7 +24,12 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.routes = computed(() => this.router.config.find(route => route.path === 'test').children);
+        this.routes['components'] = this.getRoutes('components');
+        this.routes['utils'] = this.getRoutes('utils');
+        this.routes['directives'] = this.getRoutes('directives');
     }
 
+    private getRoutes(group: string) {
+        return this.router.config.find(route => route.path === group).children;
+    }
 }

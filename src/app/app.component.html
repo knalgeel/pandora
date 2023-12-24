@@ -1,20 +1,25 @@
 <div class="min-h-screen flex">
     <div class="border-r">
-        <div class="w-60 sticky top-0 h-fit">
-            <h2 class="px-6 py-3 text-lg font-bold">
-                Components
-            </h2>
-            <ul class="divide-y border-t">
-                @for (route of routes(); track route) {
-                    <li>
-                        <a [routerLink]="'test/' + route.path">
-                            <div class="px-6 py-3 text-sm">
-                                {{ route.path }}
-                            </div>
-                        </a>
-                    </li>
-                }
-            </ul>
+        <div class="w-60 sticky top-0 h-fit divide-y">
+            @for (group of routes | keyvalue; track group) {
+                <div class="row-span-full">
+                    <h2 class="px-4 py-3 font-semibold">
+                        {{ group.key }}
+                    </h2>
+                    <ul class="border-t w-full">
+                        @for (route of group.value; track route) {
+                            <li class="px-2 py-1 w-full">
+                                <a
+                                    [routerLink]="group.key + '/' + route.path"
+                                    class="block px-3 py-1 text-sm hover:bg-gray-100 rounded-md overflow-hidden w-full"
+                                >
+                                    {{ route.path }}
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
         </div>
     </div>
     <div class="flex-grow">
@@ -22,7 +27,7 @@
             {{ currentRoute.path }}
         </h1>
         <div>
-            <router-outlet></router-outlet>
+            <router-outlet/>
         </div>
     </div>
 </div>

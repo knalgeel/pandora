@@ -1,40 +1,35 @@
-<div class="grid grid-cols-2 gap-10">
-    <div class="divide-y ">
-        <div class="grid gap-5 items-center pb-5 grid-cols-9">
-            <div class="col-span-1">
-                Size
+<app-component-docs-switch>
+    <div component>
+        <div class="divide-y max-w-5xl mx-auto">
+            <div class="grid gap-5 items-center pb-5 grid-cols-9 text-sm font-semibold">
+                <div class="col-span-1">
+                    Size
+                </div>
+                <div class="col-span-4 text-center">
+                    With image
+                </div>
+                <div class="col-span-4 text-center">
+                    Placeholder
+                </div>
             </div>
-            <div class="col-span-4 text-center">
-                With image
-            </div>
-            <div class="col-span-4 text-center">
-                Placeholder
-            </div>
+            @for (size of sizes; track size) {
+                <div class="grid gap-10 items-center py-6 grid-cols-9">
+                    <div class="col-span-1 font-bold text-xl">
+                        {{ size }}
+                    </div>
+                    <div class="col-span-4 flex justify-center">
+                        <pandora-avatar [src]="'https://i.pravatar.cc/300?random=' + size" [size]="size"/>
+                    </div>
+                    <div class="col-span-4 flex justify-center">
+                        <pandora-avatar [size]="size"/>
+                    </div>
+                </div>
+            }
         </div>
-        @for (size of sizes; track size) {
-            <div class="grid gap-10 items-center py-6 grid-cols-9">
-                <div class="col-span-1 font-bold text-xl">
-                    {{ size }}
-                </div>
-                <div class="col-span-4 flex justify-center">
-                    <pandora-avatar [src]="'https://i.pravatar.cc/300?random=' + size" [size]="size"/>
-                </div>
-                <div class="col-span-4 flex justify-center">
-                    <pandora-avatar [size]="size"/>
-                </div>
-            </div>
-        }
     </div>
-    <div class="flex flex-col space-y-6">
-        <app-code-block
-            title="Import"
-            asset="stubs/avatar.ts.stub"
-            language="ts"
-        />
-        <app-code-block
-            title="Usage"
-            asset="stubs/avatar.html.stub"
-            language="html"
-        />
+    <div documentation>
+        <div class="max-w-3xl mx-auto">
+            <app-markdown-block asset="markdown/avatar.markdown"/>
+        </div>
     </div>
-</div>
+</app-component-docs-switch>

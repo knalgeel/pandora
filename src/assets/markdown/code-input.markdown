@@ -1,18 +1,18 @@
-## Using the PandoraCodeInput Component
+## Using the CodeInput Component
 
-The `PandoraCodeInput` component is a standalone Angular component designed for inputting and handling character-by-character code input. This guide will help you understand how to implement and use this component in your Angular applications.
+The `CodeInputComponent` is a standalone Angular component designed for inputting and handling character-by-character code input. This guide will help you understand how to implement and use this component in your Angular applications.
 
 ### Importing the Component
 
 Since `PandoraCodeInput` is a standalone component, it can be imported directly into your module without needing to import an entire module. Add the component to your module's declarations.
 
 ```typescript
-import { PandoraCodeInputComponent } from '@knalgeel/pandora';
+import { CodeInputComponent } from '@knalgeel/pandora';
 
 @NgModule({
   declarations: [
     // ... other components
-    PandoraCodeInputComponent
+      CodeInputComponent
   ],
   // ...
 })

@@ -23,6 +23,9 @@ import { MarkdownBlockComponent } from './markdown-block/markdown-block.componen
 import { ComponentDocsSwitchComponent } from './components/component-docs-switch/component-docs-switch.component';
 import { TableActionsComponent } from "../../projects/pandora/src/lib/components/table";
 import { FormsModule } from "@angular/forms";
+import { ArrayPaginatorPageComponent } from './pages/utils/array-paginator-page/array-paginator-page.component';
+import { GraphqlPaginatorPageComponent } from './pages/utils/graphql-paginator-page/graphql-paginator-page.component';
+import { KeyboardPaginatorControllerPageComponent } from './pages/utils/keyboard-paginator-controller/keyboard-paginator-controller-page.component';
 
 @NgModule({
     declarations: [
@@ -34,7 +37,10 @@ import { FormsModule } from "@angular/forms";
         ApiDocComponent,
         ApiDocSectionComponent,
         MarkdownBlockComponent,
-        ComponentDocsSwitchComponent
+        ComponentDocsSwitchComponent,
+        ArrayPaginatorPageComponent,
+        GraphqlPaginatorPageComponent,
+        KeyboardPaginatorControllerPageComponent
     ],
     imports: [
         CommonModule,

@@ -11,12 +11,25 @@ import * as marked from 'marked';
 import { HttpClient } from "@angular/common/http";
 import Prism from "prismjs";
 import { CodeBlockComponent } from "../components/code-block/code-block.component";
+import { animate, style, transition, trigger } from "@angular/animations";
 
 @Component({
     selector: 'app-markdown-block',
     templateUrl: './markdown-block.component.html',
     styleUrl: './markdown-block.component.scss',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    animations: [
+        trigger('fadeAnimation', [
+            transition(':enter', [
+                style({ opacity: 0 }),
+                animate('150ms ease-in', style({ opacity: 1 })),
+            ]),
+            transition(':leave', [
+                style({ opacity: 1, position: 'absolute', width: '100%' }),
+                animate('50ms', style({ opacity: 0 })),
+            ]),
+        ]),
+    ]
 })
 export class MarkdownBlockComponent implements OnInit {
 
