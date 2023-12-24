@@ -1,5 +1,4 @@
-
-fields: TableFieldRecord<User> = {
+const fields: TableFieldRecord<User> = {
    ...
     actions: {
         header: '',

@@ -1,5 +1,7 @@
 
-fields: TableFieldRecord<User> = {
+import { TableFieldRecord } from "@knalgeel/pandora";
+
+const fields: TableFieldRecord<User> = {
     name: {
         header: 'Name',
         column: (item) => item.name,

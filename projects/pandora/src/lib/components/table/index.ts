@@ -9,6 +9,7 @@ import { ITableAction } from "./actions/typings/action";
 export {
     TableComponent,
     TableActionsComponent,
+
     TableFieldRecord,
     ITableField,
     ITableHeader,

@@ -1,0 +1,7 @@
+<div class="border rounded-md overflow-hidden">
+    <pandora-table
+        [fields]="fields"
+        [items]="paginator.items"
+    />
+</div>
+<pandora-paginator [paginator]="paginator"/>

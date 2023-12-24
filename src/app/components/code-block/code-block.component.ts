@@ -11,13 +11,23 @@ import 'prismjs/components/prism-scss';
 import 'prismjs/components/prism-json';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+import 'prismjs/plugins/normalize-whitespace/prism-normalize-whitespace';
+
+Prism.plugins['NormalizeWhitespace'].setDefaults({
+    'remove-trailing': true,
+    'remove-indent': true,
+    'left-trim': true,
+    'right-trim': true,
+});
 
 @Component({
-  selector: 'app-code-block',
-  templateUrl: './code-block.component.html',
-  styleUrl: './code-block.component.scss'
+    selector: 'app-code-block',
+    templateUrl: './code-block.component.html',
+    styleUrls: ['./code-block.component.scss']
 })
-export class CodeBlockComponent implements OnInit{
+export class CodeBlockComponent implements OnInit {
+
+    private _content: string;
 
     // ----------[ Input ]----------
 
@@ -25,7 +35,13 @@ export class CodeBlockComponent implements OnInit{
     title: string = '';
 
     @Input()
-    content: string = '';
+    set content(value: string) {
+        this._content = value.trim();
+    }
+
+    get content(): string {
+        return this._content;
+    }
 
     @Input()
     language: string = 'typescript';
@@ -35,25 +51,31 @@ export class CodeBlockComponent implements OnInit{
 
     // ----------[ Refs ]----------
 
-    @ViewChild('code', { static: true }) code: ElementRef;
+    @ViewChild('code', { static: true })
+    code: ElementRef<HTMLElement>
 
     constructor(
         private readonly http: HttpClient,
-        private readonly elementRef: ElementRef,
         private readonly changeDetectorRef: ChangeDetectorRef,
     ) {}
 
     ngOnInit() {
         if (this.asset) {
             this.loadAsset();
+        } else {
+            this.highlight();
         }
     }
 
     private loadAsset() {
-        this.http.get(`assets/${this.asset}`, { responseType: 'text' }).subscribe(data => {
+        this.http.get(`assets/${ this.asset }`, { responseType: 'text' }).subscribe(data => {
             this.content = data;
-            this.changeDetectorRef.detectChanges();
-            Prism.highlightElement(this.code.nativeElement);
+            this.highlight();
         });
+    }
+
+    private highlight() {
+        this.changeDetectorRef.detectChanges();
+        Prism.highlightElement(this.code.nativeElement);
     }
 }

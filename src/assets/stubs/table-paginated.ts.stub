@@ -1,0 +1,11 @@
+import { TableFieldRecord, ArrayPaginator } from "@knalgeel/pandora";
+
+export class ExampleTableComponent {
+
+    fields: TableFieldRecord<User> = { ... }
+
+    items = signal<User[]>([ ... ]);
+
+    paginator = new ArrayPaginator(this.items);
+
+}

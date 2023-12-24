@@ -2,24 +2,24 @@
 
     @apply text-sm;
 
-    :first-child {
+    &:first-child {
         padding-top: 0 !important;
     }
 
     h1 {
-        @apply text-3xl font-bold text-gray-900 mb-6 pt-4;
+        @apply text-3xl font-bold text-gray-900 mb-8 pt-4;
     }
 
     h2 {
-        @apply text-2xl font-bold text-gray-900 mb-4 pt-4;
+        @apply text-2xl font-bold text-gray-900 mb-6 pt-4;
     }
 
     h3 {
-        @apply text-xl font-bold text-gray-900 mb-2 pt-4;
+        @apply text-xl font-bold text-gray-900 mb-4 pt-4;
     }
 
     h4 {
-        @apply text-lg font-bold text-gray-900 mb-4 pt-4;
+        @apply text-lg font-bold text-gray-900 mb-2 pt-4;
     }
 
     h5 {
@@ -43,6 +43,18 @@
     }
 
     code {
-        @apply text-sm text-gray-900 bg-gray-100 rounded px-1;
+        @apply bg-gray-200 rounded px-1 text-xs;
     }
+
+    pre {
+        code {
+            @apply bg-transparent rounded-none text-sm;
+        }
+    }
+
+
+    .code-block {
+        @apply mb-4;
+    }
+
 }

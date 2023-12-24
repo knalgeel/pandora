@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgClass } from "@angular/common";
 
 @Component({
@@ -10,20 +10,21 @@ import { NgClass } from "@angular/common";
     templateUrl: './code-input.component.html',
     styleUrls: ['./code-input.component.scss']
 })
-export class CodeInputComponent implements OnInit {
+export class CodeInputComponent {
 
     values: string[] = [];
 
     // ---------- [Inputs ] ----------
 
     @Input()
-    count: number = 6;
-
-    // ---------- [ Lifecycle Hooks ] ----------
-
-    ngOnInit() {
-        this.values = new Array(this.count).fill('');
+    set digits(count: number) {
+        this.values = new Array(count).fill('');
     }
+
+    // ---------- [ Outputs ] ----------
+
+    @Output()
+    filled = new EventEmitter<string>();
 
     // ---------- [ Event Handlers ] ----------
 
@@ -36,6 +37,11 @@ export class CodeInputComponent implements OnInit {
         this.values[index] = value;
 
         this.handleFocus(value, index, target);
+
+        if (this.isFilled) {
+            this.filled.emit(this.values.join(''));
+            target.blur();
+        }
     }
 
     protected onKeyDown(event: KeyboardEvent, index: number) {
@@ -53,12 +59,12 @@ export class CodeInputComponent implements OnInit {
     protected onPaste(event: ClipboardEvent, index: number) {
         event.preventDefault();
 
-        const pastedData = event.clipboardData?.getData('text').slice(0, this.count) || '';
+        const pastedData = event.clipboardData?.getData('text').slice(0, this.digits) || '';
         const characters = pastedData.split('');
 
         characters.forEach((char, i) => {
             i = index + i;
-            if (i < this.count) {
+            if (i < this.digits) {
                 this.values[i] = char;
             }
         });
@@ -68,8 +74,7 @@ export class CodeInputComponent implements OnInit {
         target.blur();
     }
 
-    private handleFocus(value: string, index: number, target: HTMLInputElement)
-    {
+    private handleFocus(value: string, index: number, target: HTMLInputElement) {
         if (this.shouldFocusOnPrevious(value, index)) {
             this.focusOnPrevious(target);
             return;
@@ -78,10 +83,6 @@ export class CodeInputComponent implements OnInit {
         if (this.shouldFocusOnNext(value, index)) {
             this.focusOnNext(target);
             return;
-        }
-
-        if (target.parentElement) {
-            setTimeout(() => target.focus(), 0);
         }
     }
 
@@ -100,13 +101,20 @@ export class CodeInputComponent implements OnInit {
     }
 
     private shouldFocusOnNext(value: string, index: number) {
-        return value.length === 1 && index < this.count - 1;
+        return value.length === 1 && index < this.digits - 1;
     }
 
     // ---------- [ Getters ] ----------
 
     get class() {
-        return `code-input--count-${ this.count }`;
+        return `code-input--count-${ this.digits }`;
     }
 
+    get isFilled() {
+        return this.values.every(value => value.length === 1);
+    }
+
+    get digits() {
+        return this.values.length;
+    }
 }

@@ -1,27 +1,31 @@
 <div>
-    <div class="grid grid-cols-2 border-b overflow-hidden text-sm">
+    <div class="grid grid-cols-2 border-b overflow-hidden text-sm text-gray-600 divide-x">
         <div
             (click)="setState('component')"
-            [class]="state === 'component' ? 'border-b-2 border-b-indigo-500' : ''"
-            class="p-4 text-center cursor-pointer"
+            [class]="state === 'component' ? 'border-b-2 font-semibold border-b-indigo-500 text-gray-800' : ''"
+            class="p-4 text-center cursor-pointer transition-all duration-150"
         >
-            Component
+            Demo
         </div>
         <div
             (click)="setState('documentation')"
-            [class]="state === 'documentation' ? 'border-b-2 border-b-indigo-500' : ''"
-            class="p-4 text-center cursor-pointer"
+            [class]="state === 'documentation' ? 'border-b-2 font-semibold border-b-indigo-500 text-gray-800' : ''"
+            class="p-4 text-center cursor-pointer transition-all duration-150"
         >
-            Documentation
+            Docs
         </div>
     </div>
-    <div class="py-12">
+    <div class="py-12 relative">
         @switch (state) {
             @case ('component') {
-                <ng-content select="[component]"/>
+                <div @fadeAnimation>
+                    <ng-content select="[component]"/>
+                </div>
             }
             @case ('documentation') {
-                <ng-content select="[documentation]"/>
+                <div @fadeAnimation>
+                    <ng-content select="[documentation]"/>
+                </div>
             }
         }
     </div>

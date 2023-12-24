@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
@@ -16,11 +16,13 @@ import { AvatarTestComponent } from './pages/test/avatar-test/avatar-test.compon
 import { AvatarComponent } from "../../projects/pandora/src/lib/components/avatar";
 import { AutoAnimateDirective } from "pandora";
 import { CodeBlockComponent } from './components/code-block/code-block.component';
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { ApiDocComponent } from './api-doc/api-doc.component';
 import { ApiDocSectionComponent } from './api-doc-section/api-doc-section.component';
 import { MarkdownBlockComponent } from './markdown-block/markdown-block.component';
 import { ComponentDocsSwitchComponent } from './components/component-docs-switch/component-docs-switch.component';
+import { TableActionsComponent } from "../../projects/pandora/src/lib/components/table";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -46,11 +48,13 @@ import { ComponentDocsSwitchComponent } from './components/component-docs-switch
         }),
 
         TableComponent,
+        TableActionsComponent,
         PaginatorComponent,
         CodeInputComponent,
         AvatarComponent,
 
         AutoAnimateDirective,
+        FormsModule,
     ],
     bootstrap: [
         AppComponent

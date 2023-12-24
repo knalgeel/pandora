@@ -18,7 +18,3 @@ Example of action field configuration:
 
 - `header`: Set as an empty string as it's not needed for actions.
 - `column`: Returns an object with `component` set to `TableActionsComponent` and `inputs` containing the actions.
-
-### Handling Action Execution
-
-Each action's `execute` method should be linked to the desired functionality. This might include operations like modifying data or opening a modal.

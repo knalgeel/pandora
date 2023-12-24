@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class CodeInputTestComponent {
 
+    count: number = 6;
+
+    filled: boolean = false;
+
+    onFilled(value: string) {
+        this.filled = true;
+        setTimeout(() => this.filled = false, 2000);
+    }
+
 }

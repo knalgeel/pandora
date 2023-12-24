@@ -1,17 +1,17 @@
 <div class="code-block">
-    <div class="border divide-y rounded-md overflow-hidden">
-        <div class="py-1 px-2 bg-gray-100 flex justify-between">
-            <div class="text-sm font-bold">
+    <div class="border divide-y rounded-lg overflow-hidden">
+        <div class="p-3 bg-gray-100 flex justify-between items-center">
+            <div class="text-sm font-semibold">
                 {{ title }}
             </div>
-            <div class="font-medium text-xs">
+            <div class="text-gray-500 text-xs">
                 {{ language }}
             </div>
         </div>
         <div>
-            <div class="-my-14">
+            <div>
                 <div class="overflow-x-scroll">
-                    <pre class="bg-transparent">
+                    <pre class="bg-transparent m-0 p-3">
                         <code #code [class]="'language-' + language" class="text-xs">
                             {{ content }}
                         </code>

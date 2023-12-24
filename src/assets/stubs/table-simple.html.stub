@@ -1,4 +1,3 @@
-
 <pandora-table
     [fields]="fields"
     [items]="items"

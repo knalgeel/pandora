@@ -1,6 +1,7 @@
 import { Component, computed, OnInit, Signal } from '@angular/core';
 import { ActivatedRoute, Route, Router, RouterOutlet } from '@angular/router';
 import { CurrentRoute } from "../../projects/pandora/src/lib/utils/router/current-route";
+import Prism from "prismjs";
 
 @Component({
     selector: 'app-root',

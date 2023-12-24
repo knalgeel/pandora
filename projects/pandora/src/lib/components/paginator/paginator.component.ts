@@ -5,7 +5,7 @@ import { heroChevronLeftMini, heroChevronRightMini } from "@ng-icons/heroicons/m
 import { Paginator } from "../../utils/pagination/typings/paginator";
 
 @Component({
-    selector: 'app-paginator',
+    selector: 'pandora-paginator',
     standalone: true,
     imports: [
         ButtonComponent,

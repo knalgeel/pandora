@@ -1,8 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { TableFieldRecord, ArrayPaginator } from "pandora";
-import {
-    TableActionsComponent
-} from "../../../../../projects/pandora/src/lib/components/table";
+import { TableActionsComponent } from "../../../../../projects/pandora/src/lib/components/table";
+
 
 export interface User {
     id: string;
@@ -32,11 +31,9 @@ export class TableTestComponent {
         phone: {
             header: {
                 text: 'Phone',
-                class: 'text-red-500',
             },
             column: {
                 handle: (item) => item.phone,
-                class: 'line-through',
             },
             order: 3,
         },

@@ -1,58 +1,87 @@
 <app-component-docs-switch>
     <div component>
-        <div>
+        <div class="max-w-7xl mx-auto">
             <div class="border rounded-md overflow-hidden">
                 <pandora-table
                     [fields]="fields"
                     [items]="paginator.items"
                 />
             </div>
-
-            <app-paginator [paginator]="paginator"/>
+            <div class="py-3">
+                <pandora-paginator [paginator]="paginator"/>
+            </div>
         </div>
     </div>
-    <div documentation class="space-y-16">
-        <div class="grid grid-cols-5 gap-12 pt-6">
-            <div class="col-span-2">
-                <app-markdown-block asset="markdown/table-usage.markdown"/>
+    <div documentation>
+        <div class="divide-y">
+            <div class="pb-12">
+                <div class="grid grid-cols-5 gap-8 max-w-6xl mx-auto">
+                    <div class="col-span-3">
+                        <app-markdown-block asset="markdown/table-usage.markdown"/>
+                    </div>
+                    <div class="col-span-2 flex flex-col space-y-6 pt-16">
+                        <app-code-block
+                            title="Import"
+                            language="typescript"
+                            asset="stubs/table.import.ts.stub"
+                        />
+                        <app-code-block
+                            title="Template"
+                            language="html"
+                            asset="stubs/table-simple.html.stub"
+                        />
+                    </div>
+                </div>
             </div>
-            <div class="col-span-3 flex flex-col space-y-6 pt-10">
-                <app-code-block
-                    title="Import"
-                    language="typescript"
-                    asset="stubs/table.import.ts.stub"
-                />
-                <app-code-block
-                    title="Template"
-                    language="html"
-                    asset="stubs/table-simple.html.stub"
-                />
-            </div>
-        </div>
 
-        <div class="grid grid-cols-5 gap-12 pt-6">
-            <div class="col-span-2">
-                <app-markdown-block asset="markdown/table-field-definition.markdown"/>
+            <div class="py-12">
+                <div class="grid grid-cols-5 gap-8 max-w-6xl mx-auto">
+                    <div class="col-span-3">
+                        <app-markdown-block asset="markdown/table-field-definition.markdown"/>
+                    </div>
+                    <div class="col-span-2 flex flex-col space-y-6 pt-16">
+                        <app-code-block
+                            title="Fields example"
+                            language="typescript"
+                            asset="stubs/table.fields.ts.stub"
+                        />
+                    </div>
+                </div>
             </div>
-            <div class="col-span-3 flex flex-col space-y-6 pt-10">
-                <app-code-block
-                    title="Fields example"
-                    language="typescript"
-                    asset="stubs/table.fields.ts.stub"
-                />
-            </div>
-        </div>
 
-        <div class="grid grid-cols-5 gap-12 pt-6">
-            <div class="col-span-2">
-                <app-markdown-block asset="markdown/table-field-actions.markdown"/>
+            <div class="py-12">
+                <div class="grid grid-cols-5 gap-8 max-w-6xl mx-auto">
+                    <div class="col-span-3">
+                        <app-markdown-block asset="markdown/table-field-actions.markdown"/>
+                    </div>
+                    <div class="col-span-2 flex flex-col space-y-6 pt-16">
+                        <app-code-block
+                            title="Table actions example"
+                            language="typescript"
+                            asset="stubs/table.field-actions.ts.stub"
+                        />
+                    </div>
+                </div>
             </div>
-            <div class="col-span-3 flex flex-col space-y-6 pt-10">
-                <app-code-block
-                    title="Table actions example"
-                    language="typescript"
-                    asset="stubs/table.field-actions.ts.stub"
-                />
+
+            <div class="py-12">
+                <div class="grid grid-cols-5 gap-8 max-w-6xl mx-auto">
+                    <div class="col-span-2">
+                        <app-markdown-block asset="markdown/table-pagination.markdown"/>
+                    </div>
+                    <div class="col-span-3 flex flex-col space-y-6 pt-16">
+                        <app-code-block
+                            title="Paginated table class example"
+                            language="typescript"
+                            asset="stubs/table-paginated.ts.stub"
+                        />
+                        <app-code-block
+                            title="Paginated table template example"
+                            language="html"
+                            asset="stubs/table-paginated.html.stub"
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
