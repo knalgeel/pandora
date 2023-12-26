@@ -5,3 +5,4 @@ export * from './lib/components/table';
 export * from './lib/directives';
 
 export * from './lib/utils/pagination';
+export * from './lib/utils/router';
