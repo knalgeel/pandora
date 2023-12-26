@@ -33,6 +33,7 @@ export class CodeInputComponent {
 
         const target = event.target as HTMLInputElement;
         const value = target.value[target.value.length - 1];
+        target.value = value;
 
         this.values[index] = value;
 
