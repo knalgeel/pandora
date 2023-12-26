@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { CodeInputComponent } from "../../../../../projects/pandora/src/lib/components/code-input";
 
 @Component({
   selector: 'app-code-input-test',
@@ -7,13 +8,15 @@ import { Component } from '@angular/core';
 })
 export class CodeInputTestComponent {
 
+    @ViewChild('codeInput') codeInput: CodeInputComponent;
+
     count: number = 6;
 
     filled: boolean = false;
 
     onFilled(value: string) {
         this.filled = true;
-        setTimeout(() => this.filled = false, 2000);
+        this.codeInput.clear();
     }
 
 }

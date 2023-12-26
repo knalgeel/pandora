@@ -39,8 +39,8 @@ export class CodeInputComponent {
         this.handleFocus(value, index, target);
 
         if (this.isFilled) {
-            this.filled.emit(this.values.join(''));
             target.blur();
+            setTimeout(() => this.emitEvent());
         }
     }
 
@@ -108,6 +108,10 @@ export class CodeInputComponent {
 
     private shouldFocusOnNext(value: string, index: number) {
         return value.length === 1 && index < this.digits - 1;
+    }
+
+    private emitEvent() {
+        this.filled.emit(this.values.join(''));
     }
 
     // ---------- [ Getters ] ----------
