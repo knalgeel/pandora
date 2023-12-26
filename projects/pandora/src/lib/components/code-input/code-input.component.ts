@@ -32,7 +32,9 @@ export class CodeInputComponent {
         event.preventDefault();
 
         const target = event.target as HTMLInputElement;
-        const value = target.value[target.value.length - 1];
+        const cursorPosition = target.selectionStart || 0;
+        const value = target.value[cursorPosition - 1] || '';
+
         target.value = value;
 
         this.values[index] = value;
