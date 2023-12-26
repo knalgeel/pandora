@@ -6,7 +6,7 @@ import { AutoAnimateDirective } from "../../../directives";
 import { IOption, Option } from "./typings/option";
 
 @Component({
-    selector: 'app-input-group',
+    selector: 'pandora-input-group',
     standalone: true,
     imports: [CommonModule, ReactiveFormsModule, AutoAnimateDirective, AutoAnimateDirective],
     templateUrl: './input-group.component.html',

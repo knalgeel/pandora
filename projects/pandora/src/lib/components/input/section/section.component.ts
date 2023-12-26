@@ -4,7 +4,7 @@ import { NgIcon } from "@ng-icons/core";
 import { AutoAnimateDirective } from "../../../directives";
 
 @Component({
-    selector: 'app-input-section',
+    selector: 'pandora-input-section',
     standalone: true,
     imports: [CommonModule, AutoAnimateDirective, NgIcon],
     templateUrl: './section.component.html',
