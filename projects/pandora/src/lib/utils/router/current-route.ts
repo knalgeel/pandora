@@ -22,8 +22,8 @@ export class CurrentRoute {
         ).subscribe(route => this._route = route);
     }
 
-    get path() {
-        return this._route?.snapshot.url;
+    get snapshot() {
+        return this._route?.snapshot;
     }
 
 
