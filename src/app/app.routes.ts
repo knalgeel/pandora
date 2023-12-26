@@ -7,6 +7,7 @@ import { GraphqlPaginatorPageComponent } from "./pages/utils/graphql-paginator-p
 import {
     KeyboardPaginatorControllerPageComponent
 } from "./pages/utils/keyboard-paginator-controller/keyboard-paginator-controller-page.component";
+import { ProgressNavPageComponent } from "./pages/test/progress-nav-page/progress-nav-page.component";
 
 export const routes: Routes = [
     {
@@ -23,14 +24,16 @@ export const routes: Routes = [
             {
                 path: 'avatar',
                 component: AvatarTestComponent,
+            },
+            {
+                path: 'progress-nav',
+                component: ProgressNavPageComponent,
             }
         ]
     },
     {
         path: 'directives',
-        children: [
-
-        ]
+        children: []
     },
     {
         path: 'utils',

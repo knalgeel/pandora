@@ -8,7 +8,7 @@ import { TableTestComponent } from './pages/test/table-test/table-test.component
 import { TableComponent } from "pandora";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgIconsModule } from "@ng-icons/core";
-import { heroPencilSquare, heroTrash } from "@ng-icons/heroicons/outline";
+import { heroCheck, heroPencilSquare, heroTrash } from "@ng-icons/heroicons/outline";
 import { PaginatorComponent } from "../../projects/pandora/src/lib/components/paginator/paginator.component";
 import { CodeInputTestComponent } from './pages/test/code-input-test/code-input-test.component';
 import { CodeInputComponent } from "../../projects/pandora/src/lib/components/code-input";
@@ -27,6 +27,10 @@ import { ArrayPaginatorPageComponent } from './pages/utils/array-paginator-page/
 import { GraphqlPaginatorPageComponent } from './pages/utils/graphql-paginator-page/graphql-paginator-page.component';
 import { KeyboardPaginatorControllerPageComponent } from './pages/utils/keyboard-paginator-controller/keyboard-paginator-controller-page.component';
 import { NotificationContainerComponent } from "../../projects/pandora/src/lib/components/notification";
+import { ProgressNavPageComponent } from "./pages/test/progress-nav-page/progress-nav-page.component";
+import {
+    ProgressNavComponent
+} from "../../projects/pandora/src/lib/components/navigation/progress-nav/progress-nav.component";
 
 @NgModule({
     declarations: [
@@ -41,7 +45,8 @@ import { NotificationContainerComponent } from "../../projects/pandora/src/lib/c
         ComponentDocsSwitchComponent,
         ArrayPaginatorPageComponent,
         GraphqlPaginatorPageComponent,
-        KeyboardPaginatorControllerPageComponent
+        KeyboardPaginatorControllerPageComponent,
+        ProgressNavPageComponent,
     ],
     imports: [
         CommonModule,
@@ -52,6 +57,7 @@ import { NotificationContainerComponent } from "../../projects/pandora/src/lib/c
         NgIconsModule.withIcons({
             heroPencilSquare,
             heroTrash,
+            heroCheck,
         }),
 
         TableComponent,
@@ -60,6 +66,7 @@ import { NotificationContainerComponent } from "../../projects/pandora/src/lib/c
         CodeInputComponent,
         AvatarComponent,
         NotificationContainerComponent,
+        ProgressNavComponent,
 
         AutoAnimateDirective,
         FormsModule,
