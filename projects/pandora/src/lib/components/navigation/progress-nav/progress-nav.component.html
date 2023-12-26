@@ -1,7 +1,10 @@
 <nav aria-label="Progress">
-    <ol role="list" class="flex items-center">
+    <ol role="list" class="flex justify-between">
         @for (step of steps; track step) {
-            <li [ngClass]="$index !== steps.length - 1 ? 'pr-8 sm:pr-20' : ''" class="relative">
+            <li
+                [ngClass]="$index === steps.length - 1 ? 'flex-grow-0' : ''"
+                class="relative flex-grow"
+            >
                 @if('complete') {
                     @switch (step.status) {
                         @case('complete') {
