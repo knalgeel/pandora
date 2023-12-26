@@ -1,0 +1,12 @@
+<div class="z-50 pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:p-6">
+    @if (notification) {
+        <div class="w-80" @slideFadeAnimation>
+            <pandora-notification
+                [type]="notification.type"
+                [icon]="notification.icon"
+            >
+                {{ notification.message }}
+            </pandora-notification>
+        </div>
+    }
+</div>

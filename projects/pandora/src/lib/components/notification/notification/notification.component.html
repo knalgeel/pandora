@@ -1,0 +1,16 @@
+<div
+    class="notification"
+    [ngClass]="typeClass"
+>
+    <div class="relative">
+        @if (icon) {
+            <div class="absolute top-0 left-0">
+                <ng-icon
+                    size="1.5em"
+                    [name]="icon"
+                />
+            </div>
+        }
+        <ng-content/>
+    </div>
+</div>

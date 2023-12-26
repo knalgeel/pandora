@@ -1,0 +1,21 @@
+:host {
+    .notification {
+        @apply font-medium px-4 py-2 rounded-md text-center w-full;
+
+        &--success {
+            @apply bg-green-500 text-white
+        }
+
+        &--warning {
+            @apply bg-yellow-500 text-white
+        }
+
+        &--error {
+            @apply bg-red-500 text-white
+        }
+
+        &--info {
+            @apply bg-blue-500 text-white
+        }
+    }
+}
