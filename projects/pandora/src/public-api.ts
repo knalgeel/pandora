@@ -2,6 +2,7 @@ export * from './lib/components/avatar';
 export * from './lib/components/code-input';
 export * from './lib/components/table';
 export * from './lib/components/input';
+export * from './lib/components/notification';
 
 export * from './lib/directives';
 
