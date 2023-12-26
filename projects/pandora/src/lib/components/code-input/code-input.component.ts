@@ -74,6 +74,12 @@ export class CodeInputComponent {
         target.blur();
     }
 
+    // ---------- [ Methods ] ----------
+
+    public clear() {
+        this.values = new Array(this.digits).fill('');
+    }
+
     private handleFocus(value: string, index: number, target: HTMLInputElement) {
         if (this.shouldFocusOnPrevious(value, index)) {
             this.focusOnPrevious(target);
