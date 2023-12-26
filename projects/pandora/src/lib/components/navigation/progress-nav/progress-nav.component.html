@@ -2,6 +2,7 @@
     <ol role="list" class="flex justify-between">
         @for (step of steps; track step) {
             <li
+                autoAnimate
                 [ngClass]="$index === steps.length - 1 ? 'flex-grow-0' : ''"
                 class="relative flex-grow"
             >

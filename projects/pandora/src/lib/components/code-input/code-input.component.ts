@@ -32,7 +32,7 @@ export class CodeInputComponent {
         event.preventDefault();
 
         const target = event.target as HTMLInputElement;
-        const value = target.value;
+        const value = target.value[target.value.length - 1];
 
         this.values[index] = value;
 
@@ -53,6 +53,7 @@ export class CodeInputComponent {
             event.preventDefault();
             const target = event.target as HTMLInputElement;
             this.focusOnPrevious(target);
+            this.values[index - 1] = '';
         }
     }
 
