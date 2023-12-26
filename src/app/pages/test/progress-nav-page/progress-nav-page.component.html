@@ -1,3 +1,12 @@
 <div class="mx-auto max-w-3xl py-12">
-    <pandora-progress-nav/>
+    <pandora-progress-nav
+        [steps]="[
+            { name: 'Step 1', href: '#', status: 'complete' },
+            { name: 'Step 2', href: '#', status: 'complete' },
+            { name: 'Step 3', href: '#', status: 'current' },
+            { name: 'Step 4', href: '#', status: 'upcoming' },
+            { name: 'Step 5', href: '#', status: 'upcoming' },
+            { name: 'Step 5', href: '#', status: 'upcoming' }
+        ]"
+    />
 </div>
