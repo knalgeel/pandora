@@ -1,10 +1,13 @@
-import { ActivatedRoute, NavigationEnd, Route, Router } from "@angular/router";
-import { filter, map } from "rxjs";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
+import { filter, map, Subject } from "rxjs";
 import { inject } from "@angular/core";
 
 export class CurrentRoute {
 
+    private readonly navigatedSubject = new Subject<ActivatedRoute>();
     private _route: ActivatedRoute;
+
+    public readonly navigated$ = this.navigatedSubject.asObservable();
 
     constructor() {
         const router = inject(Router);
@@ -19,7 +22,10 @@ export class CurrentRoute {
                 }
                 return currentRoute;
             }),
-        ).subscribe(route => this._route = route);
+        ).subscribe(route => {
+            this._route = route;
+            this.navigatedSubject.next(route);
+        });
     }
 
     get snapshot() {
