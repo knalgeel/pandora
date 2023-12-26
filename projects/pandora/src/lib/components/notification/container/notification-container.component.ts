@@ -1,17 +1,20 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { animate, style, transition, trigger } from "@angular/animations";
 import { INotification } from "../notification/typings/notification";
 import { NotificationService } from "../../../services";
 import { NotificationComponent } from "../notification/notification.component";
+import { CommonModule } from "@angular/common";
 
 @Component({
     selector: 'pandora-notification-container',
     standalone: true,
     imports: [
-        NotificationComponent
+        CommonModule,
+        NotificationComponent,
     ],
     templateUrl: './notification-container.component.html',
     styleUrls: ['./notification-container.component.scss'],
+    encapsulation: ViewEncapsulation.None,
     animations: [
         trigger('slideFadeAnimation', [
             transition(':enter', [

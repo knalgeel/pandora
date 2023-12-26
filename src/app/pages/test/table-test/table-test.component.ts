@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { TableFieldRecord, ArrayPaginator } from "pandora";
 import { TableActionsComponent } from "../../../../../projects/pandora/src/lib/components/table";
+import { NotificationService } from "../../../../../projects/pandora/src/lib/services";
 
 
 export interface User {
@@ -90,5 +91,13 @@ export class TableTestComponent {
 
     paginator = new ArrayPaginator(this.items);
 
+    constructor(private readonly notificationService: NotificationService) { }
+
+    ngOnInit() {
+        this.notificationService.add({
+            type: 'success',
+            message: 'Welcome to Pandora!'
+        });
+    }
 
 }

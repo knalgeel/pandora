@@ -26,6 +26,7 @@ import { FormsModule } from "@angular/forms";
 import { ArrayPaginatorPageComponent } from './pages/utils/array-paginator-page/array-paginator-page.component';
 import { GraphqlPaginatorPageComponent } from './pages/utils/graphql-paginator-page/graphql-paginator-page.component';
 import { KeyboardPaginatorControllerPageComponent } from './pages/utils/keyboard-paginator-controller/keyboard-paginator-controller-page.component';
+import { NotificationContainerComponent } from "../../projects/pandora/src/lib/components/notification";
 
 @NgModule({
     declarations: [
@@ -58,6 +59,7 @@ import { KeyboardPaginatorControllerPageComponent } from './pages/utils/keyboard
         PaginatorComponent,
         CodeInputComponent,
         AvatarComponent,
+        NotificationContainerComponent,
 
         AutoAnimateDirective,
         FormsModule,
