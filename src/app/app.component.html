@@ -26,7 +26,11 @@
     </div>
     <div class="flex-grow">
         <h1 class="px-6 py-3 text-lg font-bold border-b">
-            {{ currentRoute.snapshot?.url }}
+            <pandora-animated>
+                <div>
+                    {{ currentRoute.snapshot?.url }}
+                </div>
+            </pandora-animated>
         </h1>
         <div>
             <router-outlet/>

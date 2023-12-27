@@ -31,6 +31,7 @@ import { ProgressNavPageComponent } from "./pages/test/progress-nav-page/progres
 import {
     ProgressNavComponent
 } from "../../projects/pandora/src/lib/components/navigation/progress-nav/progress-nav.component";
+import { AnimatedComponent } from "../../projects/pandora/src/lib/components/misc";
 
 @NgModule({
     declarations: [
@@ -67,6 +68,7 @@ import {
         AvatarComponent,
         NotificationContainerComponent,
         ProgressNavComponent,
+        AnimatedComponent,
 
         AutoAnimateDirective,
         FormsModule,

@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
         private readonly notificationService: NotificationService,
     ) {
         this.currentRoute = new CurrentRoute();
-        this.currentRoute.navigated$.subscribe(test => console.log(test));
     }
 
     ngOnInit() {
