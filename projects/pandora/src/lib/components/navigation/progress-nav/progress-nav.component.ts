@@ -22,4 +22,17 @@ export class ProgressNavComponent {
     @Input()
     steps: IStep[] = [];
 
+    @Input()
+    set stepIndex(index: number) {
+        this.steps.forEach((step, i) => {
+            if (i < index) {
+                step.status = 'complete';
+            } else if (index === i) {
+                step.status = 'current';
+            } else {
+                step.status = 'upcoming';
+            }
+        });
+    }
+
 }
