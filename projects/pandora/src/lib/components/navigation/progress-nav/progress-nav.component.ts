@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NgClass } from "@angular/common";
 import { NgIcon } from "@ng-icons/core";
 import { RouterLink } from "@angular/router";
@@ -17,22 +17,37 @@ import { AutoAnimateDirective } from "../../../directives";
     templateUrl: './progress-nav.component.html',
     styleUrl: './progress-nav.component.css'
 })
-export class ProgressNavComponent {
+export class ProgressNavComponent implements OnInit, OnChanges {
+
+    // ----------[ Inputs ]----------
 
     @Input()
     steps: IStep[] = [];
 
     @Input()
-    set stepIndex(index: number) {
+    stepIndex: number = 0;
+
+    // ----------[ Lifecycle Hooks ]----------
+
+    ngOnInit() {
+        this.updateSteps()
+    }
+
+    ngOnChanges() {
+        this.updateSteps();
+    }
+
+    // ----------[ Methods ]----------
+
+    private updateSteps() {
         this.steps.forEach((step, i) => {
-            if (i < index) {
+            if (i < this.stepIndex) {
                 step.status = 'complete';
-            } else if (index === i) {
+            } else if (this.stepIndex === i) {
                 step.status = 'current';
             } else {
                 step.status = 'upcoming';
             }
         });
     }
-
 }
