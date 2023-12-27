@@ -1,11 +1,13 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
 import { NgClass } from "@angular/common";
+import { AutoFocusDirective } from "../../directives";
 
 @Component({
     selector: 'pandora-code-input',
     standalone: true,
     imports: [
-        NgClass
+        NgClass,
+        AutoFocusDirective
     ],
     templateUrl: './code-input.component.html',
     styleUrls: ['./code-input.component.scss']
@@ -21,10 +23,17 @@ export class CodeInputComponent {
         this.values = new Array(count).fill('');
     }
 
+    @Input()
+    autofocus = false;
+
     // ---------- [ Outputs ] ----------
 
     @Output()
     filled = new EventEmitter<string>();
+
+    // ---------- [ Refs ] ----------
+
+    @ViewChildren('input') input: QueryList<ElementRef<HTMLInputElement>>;
 
     // ---------- [ Event Handlers ] ----------
 
@@ -39,7 +48,7 @@ export class CodeInputComponent {
 
         this.values[index] = value;
 
-        this.handleFocus(value, index, target);
+        this.handleFocus(value, index);
 
         if (this.isFilled) {
             target.blur();
@@ -54,8 +63,7 @@ export class CodeInputComponent {
 
         if (this.values[index] === '' && index > 0) {
             event.preventDefault();
-            const target = event.target as HTMLInputElement;
-            this.focusOnPrevious(target);
+            this.focusOnIndex(index - 1);
             this.values[index - 1] = '';
         }
     }
@@ -64,14 +72,13 @@ export class CodeInputComponent {
         event.preventDefault();
 
         const pastedData = event.clipboardData?.getData('text').slice(0, this.digits) || '';
-        const characters = pastedData.split('');
+        const characters = pastedData.split('').splice(0, this.digits - index);
 
         characters.forEach((char, i) => {
-            i = index + i;
-            if (i < this.digits) {
-                this.values[i] = char;
-            }
+            this.values[index + i] = char;
         });
+
+        this.focusOnIndex(index + characters.length - 1);
 
         const target = event.target as HTMLInputElement;
 
@@ -80,38 +87,24 @@ export class CodeInputComponent {
 
     // ---------- [ Methods ] ----------
 
+    public focus() {
+        this.focusOnIndex(0);
+    }
+
     public clear() {
         this.values = new Array(this.digits).fill('');
     }
 
-    private handleFocus(value: string, index: number, target: HTMLInputElement) {
-        if (this.shouldFocusOnPrevious(value, index)) {
-            this.focusOnPrevious(target);
-            return;
-        }
-
-        if (this.shouldFocusOnNext(value, index)) {
-            this.focusOnNext(target);
-            return;
+    private handleFocus(value: string, index: number) {
+        if (value.length === 0 && index > 0) {
+            this.focusOnIndex(index - 1);
+        } else if (value.length === 1 && index < this.digits - 1) {
+            this.focusOnIndex(index + 1);
         }
     }
 
-    private focusOnPrevious(target: HTMLInputElement) {
-        const previousInput = target.previousElementSibling as HTMLInputElement;
-        previousInput.focus();
-    }
-
-    private focusOnNext(target: HTMLInputElement) {
-        const nextInput = target.nextElementSibling as HTMLInputElement;
-        nextInput.focus();
-    }
-
-    private shouldFocusOnPrevious(value: string, index: number) {
-        return value.length === 0 && index > 0;
-    }
-
-    private shouldFocusOnNext(value: string, index: number) {
-        return value.length === 1 && index < this.digits - 1;
+    private focusOnIndex(index: number) {
+        this.input.get(index).nativeElement.focus();
     }
 
     private emitEvent() {

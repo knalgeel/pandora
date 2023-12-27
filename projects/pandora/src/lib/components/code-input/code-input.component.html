@@ -4,6 +4,8 @@
 >
     @for(_ of values; track $index) {
         <input
+            #input
+            [pandoraAutoFocus]="$index === 0 && autofocus"
             (input)="onInput($event, $index)"
             (paste)="onPaste($event, $index)"
             (keydown)="onKeyDown($event, $index)"

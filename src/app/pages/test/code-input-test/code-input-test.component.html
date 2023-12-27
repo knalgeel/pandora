@@ -25,6 +25,7 @@
                 </div>
                 <pandora-code-input
                     #codeInput
+                    [autofocus]="true"
                     (filled)="onFilled($event)"
                     [digits]="count"
                 />
