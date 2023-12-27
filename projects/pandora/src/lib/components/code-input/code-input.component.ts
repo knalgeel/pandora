@@ -80,9 +80,9 @@ export class CodeInputComponent {
 
         this.focusOnIndex(index + characters.length - 1);
 
-        const target = event.target as HTMLInputElement;
-
-        target.blur();
+        if (this.isFilled) {
+            setTimeout(() => this.emitEvent());
+        }
     }
 
     // ---------- [ Methods ] ----------
