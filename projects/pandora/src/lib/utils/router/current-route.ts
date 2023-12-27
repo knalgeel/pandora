@@ -1,5 +1,5 @@
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
-import { filter, map, Subject } from "rxjs";
+import { filter, map, Subject, tap } from "rxjs";
 import { inject } from "@angular/core";
 
 export class CurrentRoute {
@@ -15,17 +15,24 @@ export class CurrentRoute {
 
         router.events.pipe(
             filter(event => event instanceof NavigationEnd),
-            map(() => {
-                let currentRoute = route;
-                while (currentRoute.firstChild) {
-                    currentRoute = currentRoute.firstChild;
-                }
-                return currentRoute;
-            }),
-        ).subscribe(route => {
-            this._route = route;
-            this.navigatedSubject.next(route);
-        });
+            map(() => this.findCurrentRoute(route)),
+            tap(route => this.setCurrentRoute(route))
+        ).subscribe();
+
+        this.setCurrentRoute(this.findCurrentRoute(route));
+    }
+
+    private setCurrentRoute(route: ActivatedRoute) {
+        this._route = route;
+        this.navigatedSubject.next(route);
+    }
+
+    private findCurrentRoute(route: ActivatedRoute) {
+        let currentRoute = route;
+        while (currentRoute.firstChild) {
+            currentRoute = currentRoute.firstChild;
+        }
+        return currentRoute;
     }
 
     get snapshot() {
