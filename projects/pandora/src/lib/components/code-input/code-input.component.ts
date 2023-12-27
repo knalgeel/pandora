@@ -78,10 +78,12 @@ export class CodeInputComponent {
             this.values[index + i] = char;
         });
 
-        this.focusOnIndex(index + characters.length - 1);
-
         if (this.isFilled) {
+            const target = event.target as HTMLInputElement;
+            target.blur();
             setTimeout(() => this.emitEvent());
+        } else {
+            this.focusOnIndex(index + characters.length);
         }
     }
 
@@ -104,6 +106,10 @@ export class CodeInputComponent {
     }
 
     private focusOnIndex(index: number) {
+        if (index > this.digits) {
+            return;
+        }
+
         this.input.get(index).nativeElement.focus();
     }
 
