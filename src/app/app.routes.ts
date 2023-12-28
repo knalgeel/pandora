@@ -8,6 +8,7 @@ import {
     KeyboardPaginatorControllerPageComponent
 } from "./pages/utils/keyboard-paginator-controller/keyboard-paginator-controller-page.component";
 import { ProgressNavPageComponent } from "./pages/test/progress-nav-page/progress-nav-page.component";
+import { SearchSelectPageComponent } from "./pages/components/search-select-page/search-select-page.component";
 
 export const routes: Routes = [
     {
@@ -28,6 +29,10 @@ export const routes: Routes = [
             {
                 path: 'progress-nav',
                 component: ProgressNavPageComponent,
+            },
+            {
+                path: 'search-select',
+                component: SearchSelectPageComponent,
             }
         ]
     },

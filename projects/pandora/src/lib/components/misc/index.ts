@@ -1,5 +1,5 @@
-import { AnimatedComponent } from "./animated/animated.component";
+import { FadeInOutComponent } from "./fade-in-out/fade-in-out.component";
 
 export {
-    AnimatedComponent
+    FadeInOutComponent
 }

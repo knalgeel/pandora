@@ -1,4 +1,4 @@
-import { NgModule, OnInit } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
@@ -30,8 +30,11 @@ import { NotificationContainerComponent } from "../../projects/pandora/src/lib/c
 import { ProgressNavPageComponent } from "./pages/test/progress-nav-page/progress-nav-page.component";
 import {
     ProgressNavComponent
-} from "../../projects/pandora/src/lib/components/navigation/progress-nav/progress-nav.component";
-import { AnimatedComponent } from "../../projects/pandora/src/lib/components/misc";
+} from "../../projects/pandora/src/lib/components/navigation";
+import { FadeInOutComponent } from "../../projects/pandora/src/lib/components/misc";
+import { SearchSelectPageComponent } from './pages/components/search-select-page/search-select-page.component';
+import { SearchSelectComponent } from "../../projects/pandora/src/lib/components/input";
+import { SearchSelectOptionComponent } from './pages/components/search-select-page/item/search-select-option.component';
 
 @NgModule({
     declarations: [
@@ -48,6 +51,8 @@ import { AnimatedComponent } from "../../projects/pandora/src/lib/components/mis
         GraphqlPaginatorPageComponent,
         KeyboardPaginatorControllerPageComponent,
         ProgressNavPageComponent,
+        SearchSelectPageComponent,
+        SearchSelectOptionComponent,
     ],
     imports: [
         CommonModule,
@@ -68,7 +73,8 @@ import { AnimatedComponent } from "../../projects/pandora/src/lib/components/mis
         AvatarComponent,
         NotificationContainerComponent,
         ProgressNavComponent,
-        AnimatedComponent,
+        FadeInOutComponent,
+        SearchSelectComponent,
 
         AutoAnimateDirective,
         FormsModule,
