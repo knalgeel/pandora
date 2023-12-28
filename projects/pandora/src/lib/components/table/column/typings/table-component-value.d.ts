@@ -1,4 +1,4 @@
-import { ClassType } from "../../../../../core/services/typings/class-type";
+export type ClassType = new (...args: any[]) => any;
 
 export type TableComponentValue<T extends ClassType = any> = string | number | undefined | null | {
     component: T;
