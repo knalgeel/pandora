@@ -5,6 +5,7 @@ export * from './lib/components/input';
 export * from './lib/components/notification';
 export * from './lib/components/navigation';
 export * from './lib/components/misc';
+export * from './lib/components/dynamic';
 
 export * from './lib/directives';
 

@@ -9,7 +9,7 @@ import { FormsModule } from "@angular/forms";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { AutoAnimateDirective } from "../../../directives";
 import { SpinnerComponent } from "../../misc/spinner/spinner.component";
-import { DynamicComponent } from "../../dynamic/dynamic.component";
+import { DynamicComponent } from "../../dynamic";
 import { SearchSelectItemComponent } from "./item/search-select-item.component";
 import { ItemHandle } from "./typings/item-handle";
 import { ItemPlaceholder } from "./typings/item-placeholder";
@@ -32,7 +32,7 @@ export class SearchSelectComponent<T = any> {
 
     readonly query = signal<string>('');
     readonly query$ = toObservable(this.query).pipe(
-        tap(() => this.active.set(false)),
+        tap(query => query.length === 0 && this.active.set(false)),
         debounceTime(250),
         distinctUntilChanged(),
     );

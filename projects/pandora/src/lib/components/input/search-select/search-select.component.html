@@ -24,7 +24,7 @@
                         No results found for "{{ query() }}"
                     </li>
                 } @else {
-                    @for (item of options(); track item) {
+                    @for (item of options(); track itemPlaceholder(item)) {
                         <li
                             (click)="onClickListItem($event, item)"
                             class="px-6 py-2 cursor-pointer hover:bg-gray-100"
