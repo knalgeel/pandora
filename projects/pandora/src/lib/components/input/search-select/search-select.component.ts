@@ -76,7 +76,7 @@ export class SearchSelectComponent<T = any> {
     // ----------[ Outputs ]----------
 
     @Output()
-    readonly select = new EventEmitter<T>();
+    readonly itemSelect = new EventEmitter<T>();
 
     // ----------[ Event Handlers ]----------
 
@@ -95,7 +95,7 @@ export class SearchSelectComponent<T = any> {
 
     selectItem(item: T) {
         this.selectedItem.set(item);
-        this.select.emit(item);
+        this.itemSelect.emit(item);
         this.reset();
     }
 
