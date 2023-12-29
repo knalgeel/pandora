@@ -1,1 +1,6 @@
 @import "../../../style";
+
+.search-select__input {
+    @apply placeholder-gray-900;
+    @extend .input-element;
+}

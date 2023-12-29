@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
-import { TableFieldRecord, ArrayPaginator } from "pandora";
-import { TableActionsComponent } from "../../../../../projects/pandora/src/lib/components/table";
+import { TableActionsComponent, TableFieldRecord } from "../../../../../projects/pandora/src/lib/components/table";
 import { NotificationService } from "../../../../../projects/pandora/src/lib/services";
+import { ArrayPaginator } from "../../../../../projects/pandora/src/lib/utils/pagination";
 
 
 export interface User {
