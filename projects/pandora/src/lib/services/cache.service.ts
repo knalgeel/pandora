@@ -1,7 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BusinessOnboardingService } from "./business-onboarding.service";
-import { filter, tap } from "rxjs";
-import { SearchResult } from "../../../../graphql/generated";
 
 export type CacheDriver = 'localStorage' | 'sessionStorage';
 
@@ -56,10 +53,21 @@ export class CacheService {
         return current;
     }
 
+    // ----------[ Methods ]----------
+
+    private parse(item: string | null) {
+        try {
+            return item ? JSON.parse(item) : null;
+        } catch (e) {
+            console.error('Error parsing JSON', e);
+            return null;
+        }
+    }
+
     // ----------[ Getters ]----------
 
     private get storage(): Storage {
-        switch (this.driver) {
+        switch (this._driver) {
             case 'localStorage':
                 return localStorage;
             case 'sessionStorage':
