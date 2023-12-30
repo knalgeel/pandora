@@ -7,64 +7,81 @@ export type CacheDriver = 'localStorage' | 'sessionStorage';
 })
 export class CacheService {
 
+    private static readonly CONTAINER_NAME = 'pandora';
+
+    private readonly _container: any = {};
+
     private _driver: CacheDriver = 'localStorage';
+
+    constructor() {
+        this._container = this.getContainerInstance();
+    }
 
     // ----------[ API ]----------
 
-    public set(property: string, value: any) {
-        const keys = property.split('.');
+    public set(property: string, value: any): void {
+        const segments = property.split('.');
+        let currentSegment = this._container;
 
-        if (keys.length === 1) {
-            this.storage.setItem(keys[0], JSON.stringify(value));
-            return;
-        }
+        for (let i = 0; i < segments.length; i++) {
+            const segment = segments[i];
 
-        const lastKey = keys.pop();
-        const storage = this.storage;
-
-        let current = this.parse(storage.getItem(keys[0])) || {};
-        let obj = current;
-
-        keys.forEach(key => {
-            if (!obj[key] || typeof obj[key] !== 'object') {
-                obj[key] = {};
+            if (i === segments.length - 1) {
+                currentSegment[segment] = value;
+                break;
             }
-            obj = obj[key];
-        });
 
-        if (lastKey) {
-            obj[lastKey] = value;
+            if (! currentSegment[segment] || typeof currentSegment[segment] !== 'object') {
+                currentSegment[segment] = {};
+            }
+
+            currentSegment = currentSegment[segment];
         }
 
-        storage.setItem(keys[0], JSON.stringify(current));
+        this.storage[CacheService.CONTAINER_NAME] = JSON.stringify(this._container);
     }
 
-
-    public get(property: string) {
-        const keys = property.split('.');
-        const storage = this.storage;
-
-        let current = this.parse(storage.getItem(keys[0]));
-
-        for (const key of keys.slice(1)) {
-            if (current === null || typeof current !== 'object' || ! (key in current)) {
-                return null;
-            }
-            current = current[key];
+    public get(property: string = null): any {
+        if (! property) {
+            return this._container;
         }
 
-        return current;
+        const segments = property.split('.');
+        let currentSegment = this._container;
+
+        for (const segment of segments) {
+            if (! currentSegment[segment]) {
+                return null;
+            }
+            currentSegment = currentSegment[segment];
+        }
+
+        return currentSegment;
     }
 
     // ----------[ Methods ]----------
 
-    private parse(item: string | null) {
-        try {
-            return item ? JSON.parse(item) : null;
-        } catch (e) {
-            console.error('Error parsing JSON', e);
+    private getContainerInstance() {
+        let container = this.parse(this.storage[CacheService.CONTAINER_NAME]);
+
+        if (! container || typeof container !== 'object') {
+            container = {};
+            this.storage[CacheService.CONTAINER_NAME] = JSON.stringify(container);
+        }
+
+        return container;
+    }
+
+    private parse(item: any) {
+        if (! item) {
             return null;
         }
+
+        if (typeof item !== 'string') {
+            return item;
+        }
+
+        return JSON.parse(item);
     }
 
     // ----------[ Getters ]----------
