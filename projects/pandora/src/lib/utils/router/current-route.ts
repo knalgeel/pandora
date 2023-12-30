@@ -1,7 +1,10 @@
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { filter, map, Subject, tap } from "rxjs";
-import { inject } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 
+@Injectable({
+    providedIn: 'root'
+})
 export class CurrentRoute {
 
     private readonly navigatedSubject = new Subject<ActivatedRoute>();
