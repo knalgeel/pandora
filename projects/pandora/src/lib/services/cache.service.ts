@@ -7,24 +7,26 @@ export type CacheDriver = 'localStorage' | 'sessionStorage';
 })
 export class CacheService {
 
-    private _driver: CacheDriver;
+    private _driver: CacheDriver = 'localStorage';
 
     // ----------[ API ]----------
 
-    public init(driver: CacheDriver) {
-        this._driver = driver;
-    }
-
     public set(property: string, value: any) {
         const keys = property.split('.');
+
+        if (keys.length === 1) {
+            this.storage.setItem(keys[0], JSON.stringify(value));
+            return;
+        }
+
         const lastKey = keys.pop();
         const storage = this.storage;
 
         let current = this.parse(storage.getItem(keys[0])) || {};
-
         let obj = current;
+
         keys.forEach(key => {
-            if (! obj[key] || typeof obj[key] !== 'object') {
+            if (!obj[key] || typeof obj[key] !== 'object') {
                 obj[key] = {};
             }
             obj = obj[key];
@@ -36,6 +38,7 @@ export class CacheService {
 
         storage.setItem(keys[0], JSON.stringify(current));
     }
+
 
     public get(property: string) {
         const keys = property.split('.');
@@ -66,13 +69,19 @@ export class CacheService {
 
     // ----------[ Getters ]----------
 
-    private get storage(): Storage {
+    private get storage() {
         switch (this._driver) {
             case 'localStorage':
                 return localStorage;
             case 'sessionStorage':
                 return sessionStorage;
         }
+    }
+
+    // ----------[ Setters ]----------
+
+    set driver(driver: CacheDriver) {
+        this._driver = driver;
     }
 
 }
