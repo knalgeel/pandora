@@ -1,11 +1,11 @@
-import { Directive, ElementRef, Output, EventEmitter, HostListener } from '@angular/core';
+import { Directive, ElementRef, Output, EventEmitter, HostListener, Input } from '@angular/core';
 
 @Directive({
     selector: '[pandoraOnClickOutside]',
     standalone: true,
 })
 export class OnClickOutsideDirective {
-    @Output() pandoraOnClickOutside = new EventEmitter<MouseEvent>();
+    @Input() pandoraOnClickOutside: (event: MouseEvent) => void = () => {};
 
     constructor(private elementRef: ElementRef) { }
 
@@ -13,7 +13,7 @@ export class OnClickOutsideDirective {
     onDocumentClick(event: MouseEvent): void {
         const clickedInside = this.elementRef.nativeElement.contains(event.target);
         if (! clickedInside) {
-            this.pandoraOnClickOutside.emit(event);
+            this.pandoraOnClickOutside(event);
         }
     }
 }
