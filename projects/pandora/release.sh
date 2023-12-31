@@ -16,6 +16,10 @@ NEW_VERSION=$(npm version "$VERSION_TYPE")
 # Remove the 'v' prefix if it exists
 NEW_VERSION=${NEW_VERSION#v}
 
+git add package.json
+
+git commit -m "Bump version to $NEW_VERSION"
+
 # Create a new git tag
 git tag "$NEW_VERSION"
 
