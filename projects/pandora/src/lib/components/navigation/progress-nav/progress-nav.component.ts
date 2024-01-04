@@ -22,6 +22,9 @@ export class ProgressNavComponent implements OnInit, OnChanges {
     // ----------[ Inputs ]----------
 
     @Input()
+    variant: 'circles' | 'bullets' = 'circles';
+
+    @Input()
     steps: IStep[] = [];
 
     @Input()

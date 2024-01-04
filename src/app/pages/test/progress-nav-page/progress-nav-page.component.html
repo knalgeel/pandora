@@ -1,11 +1,27 @@
-<div class="mx-auto max-w-3xl py-12 border">
-    <pandora-progress-nav
-        [steps]="[
-            { name: 'Step 1', href: '#', status: 'complete' },
-            { name: 'Step 2', href: '#', status: 'complete' },
-            { name: 'Step 3', href: '#', status: 'current' },
-            { name: 'Step 4', href: '#', status: 'upcoming' },
-            { name: 'Step 5', href: '#', status: 'upcoming' },
-        ]"
-    />
+<div class="mx-auto max-w-3xl">
+    <div class="p-12 border">
+        <pandora-progress-nav
+            [stepIndex]="2"
+            [steps]="[
+                { name: 'Step 1', href: '#', status: 'complete' },
+                { name: 'Step 2', href: '#', status: 'complete' },
+                { name: 'Step 3', href: '#', status: 'current' },
+                { name: 'Step 4', href: '#', status: 'upcoming' },
+                { name: 'Step 5', href: '#', status: 'upcoming' },
+            ]"
+        />
+    </div>
+    <div class="p-12 border">
+        <pandora-progress-nav
+            variant="bullets"
+            [stepIndex]="2"
+            [steps]="[
+                { name: 'Step 1', href: '#', status: 'complete' },
+                { name: 'Step 2', href: '#', status: 'complete' },
+                { name: 'Step 3', href: '#', status: 'current' },
+                { name: 'Step 4', href: '#', status: 'upcoming' },
+                { name: 'Step 5', href: '#', status: 'upcoming' },
+            ]"
+        />
+    </div>
 </div>

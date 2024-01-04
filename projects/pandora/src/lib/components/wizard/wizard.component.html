@@ -1,0 +1,15 @@
+<div class="bg-white rounded-md border divide-y">
+    <div class="px-5 py-3">
+        <pandora-progress-nav
+            [stepIndex]="currentStepIndex()"
+            [steps]="progressNavSteps()"
+        />
+    </div>
+    <div class="p-6">
+        @if(currentStepComponent(); as component) {
+            <pandora-dynamic
+                [component]="component"
+            />
+        }
+    </div>
+</div>
