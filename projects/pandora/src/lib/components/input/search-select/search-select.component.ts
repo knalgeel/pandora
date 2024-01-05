@@ -1,4 +1,4 @@
-import { Component, computed, EventEmitter, Input, Output, Signal, signal } from '@angular/core';
+import { Component, computed, EventEmitter, Input, Output, Signal, signal, ViewEncapsulation } from '@angular/core';
 import {
     debounceTime, distinctUntilChanged, Observable,
     of,
@@ -26,7 +26,8 @@ import { ItemPlaceholder } from "./typings/item-placeholder";
         SearchSelectItemComponent,
     ],
     templateUrl: './search-select.component.html',
-    styleUrl: './search-select.component.scss'
+    styleUrl: './search-select.component.scss',
+    encapsulation: ViewEncapsulation.None,
 })
 export class SearchSelectComponent<T = any> {
 
