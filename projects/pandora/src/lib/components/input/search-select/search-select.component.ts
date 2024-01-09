@@ -26,6 +26,7 @@ import { ItemPlaceholder } from "./typings/item-placeholder";
         SearchSelectItemComponent,
     ],
     templateUrl: './search-select.component.html',
+    styleUrls: ['./search-select.component.scss'],
     encapsulation: ViewEncapsulation.None,
 })
 export class SearchSelectComponent<T = any> {
