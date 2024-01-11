@@ -1,4 +1,4 @@
-import { GraphQlPaginator } from "./graphql-paginator";
+import { AbstractGraphQlPaginator } from "./abstract-graph-ql-paginator";
 import { ArrayPaginator} from "./array-paginator";
 import { KeyboardPaginatorController } from "./keyboard-paginator-controller";
 import { Paginator } from "./typings/paginator";
@@ -7,7 +7,7 @@ import {GraphqlPaginatorParams } from "./typings/graphql-paginator-params";
 
 
 export {
-    GraphQlPaginator,
+    AbstractGraphQlPaginator,
     ArrayPaginator,
     KeyboardPaginatorController,
     Paginator,

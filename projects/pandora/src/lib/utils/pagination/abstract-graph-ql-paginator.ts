@@ -3,7 +3,7 @@ import { GraphqlPaginatorResult } from './typings/graphql-paginator-result';
 import { GraphqlPaginatorParams } from './typings/graphql-paginator-params';
 import { Paginator } from './typings/paginator';
 
-export abstract class GraphQlPaginator<T> implements Paginator<T> {
+export abstract class AbstractGraphQlPaginator<T> implements Paginator<T> {
 
     private readonly _destroyed = new Subject<void>();
     private readonly _currentPage = new BehaviorSubject<number>(1);
@@ -102,4 +102,19 @@ export abstract class GraphQlPaginator<T> implements Paginator<T> {
     get loading(): boolean {
         return this._loading.value;
     }
+}
+
+export class GraphQlPaginator<T> extends AbstractGraphQlPaginator<T> {
+
+    constructor(
+        private readonly _fetch: (params: GraphqlPaginatorParams) => Observable<GraphqlPaginatorResult<T>>,
+        pageSize: number = 10
+    ) {
+        super(pageSize);
+    }
+
+    protected override fetch(params: GraphqlPaginatorParams): Observable<GraphqlPaginatorResult<T>> {
+        return this._fetch(params);
+    }
+    
 }
