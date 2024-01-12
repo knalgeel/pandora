@@ -32,13 +32,14 @@ export abstract class AbstractGraphQlPaginator<T> implements Paginator<T> {
     // ----------[ Methods ]----------
 
     public goto(page: number, onFinished?: () => void): void {
-        this.currentPage$.pipe(
+        const subscription = this.currentPage$.pipe(
             takeUntil(this._destroyed),
-            first(),
             switchMap(page => this.fetchPage(page)),
             tap(result => this.handleResult(result)),
-            finalize(() => onFinished?.())
-        ).subscribe();
+        ).subscribe(() => {
+            onFinished?.();
+            subscription.unsubscribe();
+        });
 
         this._currentPage.next(page);
     }
