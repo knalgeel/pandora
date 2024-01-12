@@ -7,16 +7,15 @@ export class ArrayPaginator<T> implements Paginator<T> {
 
     private _currentPage: number = 1;
 
-    private _loading: boolean = false;
-
     constructor(items: Signal<T[]>) {
         this._items = items;
     }
 
     // ----------[ Methods ]----------
 
-    public goto(page: number) {
+    public goto(page: number, onFinished?: () => void): void {
         this._currentPage = page;
+        onFinished?.();
     }
 
     public next() {
@@ -35,10 +34,6 @@ export class ArrayPaginator<T> implements Paginator<T> {
 
     get currentPage(): number {
         return this._currentPage;
-    }
-
-    get loading(): boolean {
-        return this._loading;
     }
 
     get lastPage(): number {

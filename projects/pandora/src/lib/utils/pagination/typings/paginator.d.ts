@@ -3,9 +3,7 @@ export interface Paginator<T> {
     readonly lastPage: number;
     readonly total: number;
     readonly items: T[];
-    readonly loading: boolean;
-
-    goto: (page: number) => void;
+    goto: (page: number, onFinished?: () => void) => void;
     next: () => void;
     previous: () => void;
 }

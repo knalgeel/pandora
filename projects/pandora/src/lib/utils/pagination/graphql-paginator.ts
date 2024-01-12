@@ -7,14 +7,12 @@ export abstract class AbstractGraphQlPaginator<T> implements Paginator<T> {
 
     private readonly _destroyed = new Subject<void>();
     private readonly _currentPage = new BehaviorSubject<number>(1);
-    private readonly _loading = new BehaviorSubject<boolean>(false);
 
     private _pageSize: number;
     private _total = 0;
     private _items: T[] = [];
 
     public readonly currentPage$: Observable<number> = this._currentPage.asObservable();
-    public readonly loading$: Observable<boolean> = this._loading.asObservable();
 
     // ----------[ Setup ]----------
 
@@ -22,24 +20,9 @@ export abstract class AbstractGraphQlPaginator<T> implements Paginator<T> {
         this._pageSize = pageSize;
     }
 
-    public init() {
-        this.setupCurrentPageSubscription();
-        return this.loading$;
-    }
-
     public destroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
-    }
-
-    private setupCurrentPageSubscription() {
-        this.currentPage$.pipe(
-            takeUntil(this._destroyed),
-            tap(() => this._loading.next(true)),
-            switchMap(page => this.fetchPage(page)),
-            tap(result => this.handleResult(result)),
-            tap(() => this._loading.next(false)),
-        ).subscribe();
     }
 
     // ----------[ Abstract Methods ]----------
@@ -48,9 +31,16 @@ export abstract class AbstractGraphQlPaginator<T> implements Paginator<T> {
 
     // ----------[ Methods ]----------
 
-    public goto(page: number) {
+    public goto(page: number, onFinished?: () => void): void {
+        this.currentPage$.pipe(
+            first(),
+            takeUntil(this._destroyed),
+            switchMap(page => this.fetchPage(page)),
+            tap(result => this.handleResult(result)),
+            finalize(() => onFinished?.())
+        ).subscribe();
+
         this._currentPage.next(page);
-        return this.loading$;
     }
 
     public next(): void {
@@ -68,7 +58,7 @@ export abstract class AbstractGraphQlPaginator<T> implements Paginator<T> {
     private fetchPage(page: number) {
         return this.fetch({
             after: this.calculateCursor(page),
-            first: this._pageSize
+            first: this._pageSize,
         })
     }
 
@@ -99,9 +89,6 @@ export abstract class AbstractGraphQlPaginator<T> implements Paginator<T> {
         return this._items;
     }
 
-    get loading(): boolean {
-        return this._loading.value;
-    }
 }
 
 export class GraphQlPaginator<T> extends AbstractGraphQlPaginator<T> {
@@ -116,5 +103,5 @@ export class GraphQlPaginator<T> extends AbstractGraphQlPaginator<T> {
     protected override fetch(params: GraphqlPaginatorParams): Observable<GraphqlPaginatorResult<T>> {
         return this._fetch(params);
     }
-    
+
 }
