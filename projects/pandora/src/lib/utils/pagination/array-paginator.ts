@@ -18,6 +18,14 @@ export class ArrayPaginator<T> implements Paginator<T> {
         onFinished?.();
     }
 
+    public init(): void {
+        // Do nothing
+    }
+
+    public destroy(): void {
+        // Do nothing
+    }
+
     public next() {
         this.goto(this._currentPage + 1);
     }

@@ -1,4 +1,4 @@
-import { BehaviorSubject, finalize, first, Observable, Subject, switchMap, takeUntil, tap } from 'rxjs';
+import { BehaviorSubject, filter, finalize, first, Observable, Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { GraphqlPaginatorResult } from './typings/graphql-paginator-result';
 import { GraphqlPaginatorParams } from './typings/graphql-paginator-params';
 import { Paginator } from './typings/paginator';
@@ -6,6 +6,7 @@ import { Paginator } from './typings/paginator';
 export abstract class AbstractGraphQlPaginator<T> implements Paginator<T> {
 
     private readonly _destroyed = new Subject<void>();
+    private readonly _loading = new BehaviorSubject<boolean>(false);
     private readonly _currentPage = new BehaviorSubject<number>(1);
 
     private _pageSize: number;
@@ -13,16 +14,10 @@ export abstract class AbstractGraphQlPaginator<T> implements Paginator<T> {
     private _items: T[] = [];
 
     public readonly currentPage$: Observable<number> = this._currentPage.asObservable();
-
-    // ----------[ Setup ]----------
+    public readonly loading$: Observable<boolean> = this._loading.asObservable();
 
     constructor(pageSize: number = 10) {
         this._pageSize = pageSize;
-    }
-
-    public destroy(): void {
-        this._destroyed.next();
-        this._destroyed.complete();
     }
 
     // ----------[ Abstract Methods ]----------
@@ -31,15 +26,27 @@ export abstract class AbstractGraphQlPaginator<T> implements Paginator<T> {
 
     // ----------[ Methods ]----------
 
-    public goto(page: number, onFinished?: () => void): void {
+    public init(): void {
         this.currentPage$.pipe(
-            first(),
             takeUntil(this._destroyed),
+            tap(() => this._loading.next(true)),
             switchMap(page => this.fetchPage(page)),
             tap(result => this.handleResult(result)),
-        ).subscribe(() => onFinished?.());
+            tap(() => this._loading.next(false)),
+        ).subscribe();
+    }
 
+    public destroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
+    }
+
+    public goto(page: number, onFinished?: () => void): void {
         this._currentPage.next(page);
+        this.loading$.pipe(
+            filter(loading => ! loading),
+            first(),
+        ).subscribe(() => onFinished?.());
     }
 
     public next(): void {
