@@ -1,5 +1,5 @@
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
-import { filter, map, Subject, tap } from "rxjs";
+import { filter, map, ReplaySubject, tap } from "rxjs";
 import { inject, Injectable } from "@angular/core";
 
 @Injectable({
@@ -7,7 +7,7 @@ import { inject, Injectable } from "@angular/core";
 })
 export class CurrentRoute {
 
-    private readonly navigatedSubject = new Subject<ActivatedRoute>();
+    private readonly navigatedSubject = new ReplaySubject<ActivatedRoute>();
     private _route: ActivatedRoute;
 
     public readonly navigated$ = this.navigatedSubject.asObservable();
