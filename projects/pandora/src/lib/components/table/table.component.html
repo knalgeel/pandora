@@ -19,7 +19,9 @@
                 >
                     @if (count === 0) {
                         <tr>
-                            <td pandora-table-placeholder-column></td>
+                            <td pandora-table-placeholder-column>
+                                <ng-content select="[item-placeholder]"/>
+                            </td>
                         </tr>
                     } @else {
                         @for (item of items;track item.id) {
