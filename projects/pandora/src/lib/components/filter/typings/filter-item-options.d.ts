@@ -1,0 +1,1 @@
+export type PandoraFilterOptions = { label: string, value: string | number }[];

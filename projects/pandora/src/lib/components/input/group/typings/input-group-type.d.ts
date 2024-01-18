@@ -1,1 +1,1 @@
-export type InputGroupType = 'text' | 'number' | 'password' | 'email' | 'date' | 'select';
+export type InputGroupType = 'text' | 'number' | 'password' | 'email' | 'date' | 'select' | 'checkbox' | 'radio';

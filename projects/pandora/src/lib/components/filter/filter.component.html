@@ -1,0 +1,15 @@
+<div class="pandora-filter">
+    <ul>
+        @for (item of items(); track item.key) {
+            <li>
+                <pandora-filter-item
+                    [label]="item.label"
+                    [type]="item.type"
+                    [name]="item.key"
+                    [options]="item.options"
+                    [control]="control(item.key)"
+                />
+            </li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,1 @@
+export type PandoraFilterItemType = 'text' | 'checkbox' | 'radio';

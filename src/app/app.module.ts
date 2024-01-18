@@ -35,6 +35,8 @@ import { FadeInOutComponent } from "../../projects/pandora/src/lib/components/mi
 import { SearchSelectPageComponent } from './pages/components/search-select-page/search-select-page.component';
 import { SearchSelectComponent } from "../../projects/pandora/src/lib/components/input";
 import { SearchSelectOptionComponent } from './pages/components/search-select-page/item/search-select-option.component';
+import { FilterPageComponent } from './pages/components/filter-page/filter-page.component';
+import { FilterComponent } from "../../projects/pandora/src/lib/components/filter";
 
 @NgModule({
     declarations: [
@@ -53,6 +55,7 @@ import { SearchSelectOptionComponent } from './pages/components/search-select-pa
         ProgressNavPageComponent,
         SearchSelectPageComponent,
         SearchSelectOptionComponent,
+        FilterPageComponent,
     ],
     imports: [
         CommonModule,
@@ -75,6 +78,7 @@ import { SearchSelectOptionComponent } from './pages/components/search-select-pa
         ProgressNavComponent,
         FadeInOutComponent,
         SearchSelectComponent,
+        FilterComponent,
 
         AutoAnimateDirective,
         FormsModule,

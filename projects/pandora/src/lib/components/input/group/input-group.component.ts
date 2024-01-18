@@ -14,7 +14,6 @@ import { IOption, Option } from "./typings/option";
 })
 export class InputGroupComponent implements OnInit {
 
-    private _options: IOption[] = [];
     private _value: string;
 
     // ---------- Input ----------
@@ -37,15 +36,14 @@ export class InputGroupComponent implements OnInit {
     @Input()
     placeholder: string = '';
 
-    @Input()
-    set options(options: Option[]) {
-        this._options = options.map(option => {
-            if (typeof option === 'string') {
-                return { label: option, value: option }
-            }
-            return option;
-        });
-    }
+    @Input({
+        transform: (options: Option[]) => options.map(
+            option => typeof option === 'string'
+                ? { label: option, value: option }
+                : option
+        )
+    })
+    options: IOption[] = [];
 
     // ---------- Lifecycle hooks ----------
 
@@ -63,10 +61,6 @@ export class InputGroupComponent implements OnInit {
     }
 
     // ---------- Getters ----------
-
-    get options(): IOption[] {
-        return this._options;
-    }
 
     get value(): string {
         return this._value;

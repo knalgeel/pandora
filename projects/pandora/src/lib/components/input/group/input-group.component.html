@@ -1,6 +1,7 @@
 <div
     autoAnimate
     class="input-group"
+    [ngClass]="['input-group--' + type]"
     [class.input-group--invalid]="invalid"
 >
     <label class="input-group__label">
@@ -15,12 +16,40 @@
                     (change)="onChange($event)"
                     class="input-group__field"
                 >
-                    @for (option of options;track option.value) {
+                    @for (option of options; track option.value) {
                         <option [value]="option.value">
                             {{ option.label }}
                         </option>
                     }
                 </select>
+            }
+            @case ('checkbox') {
+                @for (option of options; track option.value) {
+                    <label>
+                        <input
+                            type="checkbox"
+                            [value]="option.value"
+                            [name]="name"
+                            (change)="onChange($event)"
+                            class="input-group__field"
+                        >
+                        {{ option.label }}
+                    </label>
+                }
+            }
+            @case ('radio') {
+                @for (option of options; track option.value) {
+                    <label>
+                        <input
+                            type="radio"
+                            [value]="option.value"
+                            [name]="name"
+                            (change)="onChange($event)"
+                            class="input-group__field"
+                        >
+                        {{ option.label }}
+                    </label>
+                }
             }
             @default {
                 <input
@@ -34,7 +63,7 @@
             }
         }
     </div>
-    @if(invalid){
+    @if (invalid) {
         <p class="input-group__error">
             {{ error }}
         </p>
