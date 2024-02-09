@@ -12,5 +12,6 @@ export * from './lib/directives';
 
 export * from './lib/utils/pagination';
 export * from './lib/utils/router';
+export * from './lib/utils/controllers';
 
 export * from './lib/services';
