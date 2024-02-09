@@ -11,7 +11,7 @@ import { FormControl } from "@angular/forms";
         InputGroupComponent
     ],
     templateUrl: './item.component.html',
-    styleUrls: ['./item.component.scss']
+    styleUrls: ['./item.component.css']
 })
 export class ItemComponent {
 
