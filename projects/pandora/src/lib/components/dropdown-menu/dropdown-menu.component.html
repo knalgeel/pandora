@@ -10,7 +10,7 @@
                 <ul class="py-2">
                     @for (item of group.items;track item.label) {
                         <li
-                            (click)="onClickMenuItem(item)"
+                            (click)="onClickMenuItem($event, item)"
                             class="group px-4 py-2 hover:bg-gray-100 flex items-center cursor-pointer"
                         >
                             <ng-icon
