@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { TableActionsComponent, TableFieldRecord } from "../../../../../projects/pandora/src/lib/components/table";
 import { NotificationService } from "../../../../../projects/pandora/src/lib/services";
 import { ArrayPaginator } from "../../../../../projects/pandora/src/lib/utils/pagination";
+import { ITableRow } from "../../../../../projects/pandora/src/lib/components/table/typings/table-row";
 
 
 export interface User {
@@ -88,6 +89,11 @@ export class TableTestComponent {
         { id: '24', name: 'Alice', email: 'alice@example.com', phone: '4567893210' },
         { id: '25', name: 'Brian', email: 'brian@example.com', phone: '5678904321' },
     ]);
+
+    row: ITableRow<User> = {
+        class: 'hover:bg-gray-100',
+        onClick: (item) => console.log('Clicked', item)
+    }
 
     paginator = new ArrayPaginator(this.items);
 

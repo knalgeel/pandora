@@ -8,8 +8,8 @@ describe('GraphqlPaginatorPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GraphqlPaginatorPageComponent]
-    })
+    declarations: [GraphqlPaginatorPageComponent]
+})
     .compileComponents();
     
     fixture = TestBed.createComponent(GraphqlPaginatorPageComponent);

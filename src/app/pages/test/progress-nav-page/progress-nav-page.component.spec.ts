@@ -8,8 +8,8 @@ describe('ProgressNavPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProgressNavPageComponent]
-    })
+    declarations: [ProgressNavPageComponent]
+})
     .compileComponents();
     
     fixture = TestBed.createComponent(ProgressNavPageComponent);

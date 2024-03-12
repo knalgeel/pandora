@@ -8,8 +8,8 @@ describe('FilterPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FilterPageComponent]
-    })
+    declarations: [FilterPageComponent]
+})
     .compileComponents();
     
     fixture = TestBed.createComponent(FilterPageComponent);

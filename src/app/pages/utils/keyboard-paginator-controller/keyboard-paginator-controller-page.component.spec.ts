@@ -8,8 +8,8 @@ describe('KeyboardPaginatorControllerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [KeyboardPaginatorControllerPageComponent]
-    })
+    declarations: [KeyboardPaginatorControllerPageComponent]
+})
     .compileComponents();
     
     fixture = TestBed.createComponent(KeyboardPaginatorControllerPageComponent);

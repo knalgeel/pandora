@@ -8,8 +8,8 @@ describe('WizardPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [WizardPageComponent]
-    })
+    declarations: [WizardPageComponent]
+})
     .compileComponents();
     
     fixture = TestBed.createComponent(WizardPageComponent);

@@ -8,8 +8,8 @@ describe('ArrayPaginatorPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ArrayPaginatorPageComponent]
-    })
+    declarations: [ArrayPaginatorPageComponent]
+})
     .compileComponents();
     
     fixture = TestBed.createComponent(ArrayPaginatorPageComponent);

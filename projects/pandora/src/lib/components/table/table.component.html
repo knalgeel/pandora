@@ -25,7 +25,10 @@
                         </tr>
                     } @else {
                         @for (item of items;track item.id) {
-                            <tr>
+                            <tr
+                                (click)="onClickRow(item)"
+                                [ngClass]="row?.class"
+                            >
                                 @for (field of fields;track field) {
                                     <td
                                         pandora-table-column

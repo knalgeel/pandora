@@ -8,8 +8,8 @@ describe('MarkdownBlockComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MarkdownBlockComponent]
-    })
+    declarations: [MarkdownBlockComponent]
+})
     .compileComponents();
     
     fixture = TestBed.createComponent(MarkdownBlockComponent);

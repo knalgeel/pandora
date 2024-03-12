@@ -8,8 +8,8 @@ describe('CodeBlockComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CodeBlockComponent]
-    })
+    declarations: [CodeBlockComponent]
+})
     .compileComponents();
     
     fixture = TestBed.createComponent(CodeBlockComponent);

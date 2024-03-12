@@ -12,6 +12,7 @@ import { ColumnComponent } from "./column/column.component";
 import { AutoAnimateDirective } from "../../directives/auto-animate.directive";
 import { PlaceholderColumnComponent } from "./placeholder-column/placeholder-column.component";
 import { TableFieldRecord } from "./typings/table-field-record";
+import { ITableRow } from "./typings/table-row";
 
 @Component({
     selector: 'pandora-table',
@@ -34,6 +35,9 @@ export class TableComponent<T extends { id: string }> implements OnChanges {
     @Input()
     items: T[] = [];
 
+    @Input()
+    row: ITableRow<T>;
+
     // ----------[ Refs ]----------
 
     @ViewChild('table', { static: true }) table: ElementRef;
@@ -49,6 +53,12 @@ export class TableComponent<T extends { id: string }> implements OnChanges {
         } else {
             this.table.nativeElement.style.overflow = 'auto';
         }
+    }
+
+    // ----------[ Event Handlers ]----------
+
+    protected onClickRow(item: T) {
+        this.row?.onClick?.(item);
     }
 
     // ----------[ Methods ]----------
@@ -68,5 +78,4 @@ export class TableComponent<T extends { id: string }> implements OnChanges {
     get fields(): Array<ITableField<T>> {
         return this._fields;
     }
-
 }

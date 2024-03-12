@@ -8,8 +8,8 @@ describe('ApiDocComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ApiDocComponent]
-    })
+    declarations: [ApiDocComponent]
+})
     .compileComponents();
     
     fixture = TestBed.createComponent(ApiDocComponent);

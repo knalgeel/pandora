@@ -8,8 +8,8 @@ describe('ComponentDocsSwitchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ComponentDocsSwitchComponent]
-    })
+    declarations: [ComponentDocsSwitchComponent]
+})
     .compileComponents();
     
     fixture = TestBed.createComponent(ComponentDocsSwitchComponent);

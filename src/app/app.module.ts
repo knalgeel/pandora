@@ -5,7 +5,6 @@ import { RouterModule } from "@angular/router";
 import { routes } from "./app.routes";
 import { AppComponent } from "./app.component";
 import { TableTestComponent } from './pages/test/table-test/table-test.component';
-import { TableComponent } from "pandora";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgIconsModule } from "@ng-icons/core";
 import { heroCheck, heroPencilSquare, heroTrash } from "@ng-icons/heroicons/outline";
@@ -14,14 +13,13 @@ import { CodeInputTestComponent } from './pages/test/code-input-test/code-input-
 import { CodeInputComponent } from "../../projects/pandora/src/lib/components/code-input";
 import { AvatarTestComponent } from './pages/test/avatar-test/avatar-test.component';
 import { AvatarComponent } from "../../projects/pandora/src/lib/components/avatar";
-import { AutoAnimateDirective } from "pandora";
 import { CodeBlockComponent } from './components/code-block/code-block.component';
 import { HttpClientModule } from "@angular/common/http";
 import { ApiDocComponent } from './api-doc/api-doc.component';
 import { ApiDocSectionComponent } from './api-doc-section/api-doc-section.component';
 import { MarkdownBlockComponent } from './markdown-block/markdown-block.component';
 import { ComponentDocsSwitchComponent } from './components/component-docs-switch/component-docs-switch.component';
-import { TableActionsComponent } from "../../projects/pandora/src/lib/components/table";
+import { TableActionsComponent, TableComponent } from "../../projects/pandora/src/lib/components/table";
 import { FormsModule } from "@angular/forms";
 import { ArrayPaginatorPageComponent } from './pages/utils/array-paginator-page/array-paginator-page.component';
 import { GraphqlPaginatorPageComponent } from './pages/utils/graphql-paginator-page/graphql-paginator-page.component';
@@ -37,6 +35,7 @@ import { SearchSelectComponent } from "../../projects/pandora/src/lib/components
 import { SearchSelectOptionComponent } from './pages/components/search-select-page/item/search-select-option.component';
 import { FilterPageComponent } from './pages/components/filter-page/filter-page.component';
 import { FilterComponent } from "../../projects/pandora/src/lib/components/filter";
+import { AutoAnimateDirective } from "@formkit/auto-animate/angular";
 
 @NgModule({
     declarations: [
@@ -79,8 +78,6 @@ import { FilterComponent } from "../../projects/pandora/src/lib/components/filte
         FadeInOutComponent,
         SearchSelectComponent,
         FilterComponent,
-
-        AutoAnimateDirective,
         FormsModule,
     ],
     bootstrap: [
