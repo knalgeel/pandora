@@ -40,8 +40,10 @@ export class DropdownDirective {
 
     // ----------[ Event Handlers ]----------
 
-    @HostListener('click')
-    onClick() {
+    @HostListener('click', ['$event'])
+    onClick(event: MouseEvent) {
+        event.stopPropagation();
+
         if (! this.active) {
             this.open();
         } else {
