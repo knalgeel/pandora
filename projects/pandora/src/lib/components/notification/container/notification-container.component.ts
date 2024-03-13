@@ -21,14 +21,14 @@ export const NOTIFICATION_DURATION = 3000;
     styleUrls: ['./notification-container.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations: [
-        trigger('slideFadeAnimation', [
+        trigger('fadeAnimation', [
             transition(':enter', [
-                style({ transform: 'translateY(100%)', opacity: 0 }), // Start from below
-                animate('250ms ease-out', style({ transform: 'translateY(0)', opacity: 1 }))
+                style({ opacity: 0 }), // Start from below
+                animate('250ms ease-out', style({ opacity: 1 }))
             ]),
             transition(':leave', [
-                style({ transform: 'translateY(0)', opacity: 1, position: 'absolute'}),
-                animate('250ms ease-in', style({ transform: 'translateY(100%)', opacity: 0 })) // Exit towards the bottom
+                style({ opacity: 1, position: 'absolute', top: 0 }),
+                animate('250ms ease-in', style({ opacity: 0 })) // Exit towards the bottom
             ])
         ])
     ]
