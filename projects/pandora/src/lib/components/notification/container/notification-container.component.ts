@@ -20,18 +20,6 @@ export const NOTIFICATION_DURATION = 3000;
     templateUrl: './notification-container.component.html',
     styleUrls: ['./notification-container.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    animations: [
-        trigger('fadeAnimation', [
-            transition(':enter', [
-                style({ opacity: 0 }), // Start from below
-                animate('250ms ease-out', style({ opacity: 1 }))
-            ]),
-            transition(':leave', [
-                style({ opacity: 1, position: 'absolute', top: 0 }),
-                animate('250ms ease-in', style({ opacity: 0 })) // Exit towards the bottom
-            ])
-        ])
-    ]
 })
 export class NotificationContainerComponent implements OnInit, OnDestroy {
 

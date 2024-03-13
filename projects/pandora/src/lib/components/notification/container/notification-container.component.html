@@ -1,7 +1,7 @@
 <div class="z-50 pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:p-6">
-    <div class="space-y-3 relative">
+    <div class="relative space-y-3" autoAnimate>
         @for (notification of notifications(); track notification.id) {
-            <div class="w-80 relative" @fadeAnimation>
+            <div class="w-80 relative">
                 <pandora-notification
                     [type]="notification.type"
                     [icon]="notification.icon"
