@@ -10,6 +10,7 @@ import {
 import { ProgressNavPageComponent } from "./pages/test/progress-nav-page/progress-nav-page.component";
 import { SearchSelectPageComponent } from "./pages/components/search-select-page/search-select-page.component";
 import { FilterPageComponent } from "./pages/components/filter-page/filter-page.component";
+import { NotificationTestComponent } from "./pages/test/notification-test/notification-test.component";
 
 export const routes: Routes = [
     {
@@ -38,6 +39,10 @@ export const routes: Routes = [
             {
                 path: 'filter',
                 component: FilterPageComponent,
+            },
+            {
+                path: 'notification',
+                component: NotificationTestComponent
             }
         ]
     },

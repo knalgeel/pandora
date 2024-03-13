@@ -1,9 +1,13 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal, ViewEncapsulation } from '@angular/core';
 import { animate, style, transition, trigger } from "@angular/animations";
 import { INotification } from "../notification/typings/notification";
 import { NotificationService } from "../../../services";
 import { NotificationComponent } from "../notification/notification.component";
 import { CommonModule } from "@angular/common";
+import { Subject, takeUntil } from "rxjs";
+import { AutoAnimateDirective } from "../../../directives";
+
+export const NOTIFICATION_DURATION = 3000;
 
 @Component({
     selector: 'pandora-notification-container',
@@ -11,6 +15,7 @@ import { CommonModule } from "@angular/common";
     imports: [
         CommonModule,
         NotificationComponent,
+        AutoAnimateDirective,
     ],
     templateUrl: './notification-container.component.html',
     styleUrls: ['./notification-container.component.scss'],
@@ -22,7 +27,7 @@ import { CommonModule } from "@angular/common";
                 animate('250ms ease-out', style({ transform: 'translateY(0)', opacity: 1 }))
             ]),
             transition(':leave', [
-                style({ transform: 'translateY(0)', opacity: 1 }),
+                style({ transform: 'translateY(0)', opacity: 1, position: 'absolute'}),
                 animate('250ms ease-in', style({ transform: 'translateY(100%)', opacity: 0 })) // Exit towards the bottom
             ])
         ])
@@ -30,51 +35,36 @@ import { CommonModule } from "@angular/common";
 })
 export class NotificationContainerComponent implements OnInit, OnDestroy {
 
-    private queue: INotification[] = [];
-    private timeout?: any;
+    private readonly destroyed$ = new Subject<void>();
 
-    notification?: INotification | null = null;
+    private readonly added$ = this.notificationService.added.asObservable();
+
+    notifications = signal<INotification[]>([])
 
     constructor(private readonly notificationService: NotificationService) {}
 
     // ----------[ Lifecycle hooks ]----------
 
     ngOnInit() {
-        this.notificationService.added.subscribe(notification => this.handleNotification(notification));
+        this.added$
+            .pipe(takeUntil(this.destroyed$))
+            .subscribe(notification => this.handleNotification(notification));
     }
 
     ngOnDestroy() {
-        if (this.timeout) {
-            clearTimeout(this.timeout);
-        }
+        this.destroyed$.next();
+        this.destroyed$.complete();
     }
 
     // ----------[ Private methods ]----------
 
-    private addToQueue(value: INotification) {
-        this.queue.push(value);
-    }
-
-    private handleQueueDelayed(delay: number) {
-        setTimeout(() => this.handleQueue(), delay);
-    }
-
-    private handleQueue() {
-        if (this.queue.length === 0 || this.timeout) return;
-        this.notification = this.queue.shift() || null;
-        this.timeout = setTimeout(() => {
-            this.timeout = undefined;
-            this.notification = null;
-            if (this.queue.length > 0) {
-                this.handleQueueDelayed(250);
-            }
-        }, NOTIFICATION_DURATION);
-    }
-
     private handleNotification(notification: INotification) {
-        this.addToQueue(notification);
-        this.handleQueueDelayed(250);
+        this.notifications.update(notifications => [...notifications, notification])
+
+        setTimeout(() => this.removeNotification(notification), NOTIFICATION_DURATION);
+    }
+
+    private removeNotification(notification: INotification) {
+        this.notifications.update(notifications => notifications.filter(n => n !== notification));
     }
 }
-
-export const NOTIFICATION_DURATION = 3000;
