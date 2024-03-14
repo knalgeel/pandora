@@ -69,9 +69,6 @@ export class DropdownMenuComponent {
     // ----------[ Event Handlers ]----------
 
     onClickMenuItem(event: MouseEvent, item: MenuItem) {
-        event.stopPropagation();
-        event.preventDefault();
-
         if ('execute' in item) {
             item.execute();
         } else {
