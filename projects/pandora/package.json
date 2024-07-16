@@ -1,6 +1,6 @@
 {
     "name": "@knalgeel/pandora",
-    "version": "0.0.72",
+    "version": "0.0.73",
     "peerDependencies": {
         "@angular/common": "^18.0.0",
         "@angular/core": "^18.0.0",
